@@ -1,0 +1,237 @@
+{
+  "languageSwitcher": {
+    "label": "Language"
+  },
+  "header": {
+    "firmName": "Decker Pex & Co.",
+    "nav": {
+      "services": "Services",
+      "videos": "Videos",
+      "reviews": "Reviews",
+      "process": "Process",
+      "contact": "Contact"
+    },
+    "contactMobile": "Contact"
+  },
+  "hero": {
+    "firmLabel": "Decker Pex & Co.",
+    "title": "Legal, Notarial & Document Services",
+    "summary": "We assist with notarization, certified translations, and document acquisition from authorities in Israel and worldwide — including apostilles, FBI and police records, legal opinions on foreign law, and archive research in Israel, Germany, and Austria.",
+    "viewServices": "View all services"
+  },
+  "services": {
+    "eyebrow": "Our Services",
+    "title": "Comprehensive Legal & Document Support",
+    "subtitle": "Professional assistance across notarial, translation, acquisition, and certification matters — delivered with clarity and care.",
+    "items": {
+      "notarial": {
+        "title": "Notarial Services",
+        "description": "Signature verification, notarized copies, affidavits, declarations, and other official notarial services."
+      },
+      "translation": {
+        "title": "Translation Services",
+        "description": "Professional translation support from various languages for legal, personal, and official documents."
+      },
+      "acquisition": {
+        "title": "Document Acquisition",
+        "description": "Assistance obtaining documents from authorities, archives, municipalities, courts, and institutions in Israel and abroad."
+      },
+      "fbi": {
+        "title": "FBI Background Checks",
+        "description": "Support with FBI background check requests and related document preparation."
+      },
+      "police": {
+        "title": "Police Records",
+        "description": "Assistance obtaining police records and official certificates from relevant authorities."
+      },
+      "apostilles": {
+        "title": "Apostilles",
+        "description": "Support with apostille certification for documents intended for use abroad."
+      },
+      "foreignLaw": {
+        "title": "Foreign Law Legal Opinions",
+        "description": "Legal opinions for courts and official institutions regarding foreign laws."
+      },
+      "archive": {
+        "title": "Archive Research",
+        "description": "Search and retrieval of documents from archives in Israel, Germany, and Austria."
+      }
+    }
+  },
+  "process": {
+    "eyebrow": "How It Works",
+    "title": "A Clear, Professional Process",
+    "subtitle": "From your first inquiry to final delivery, our office guides you through each stage with structured, transparent steps.",
+    "steps": {
+      "submit": {
+        "title": "Submit Your Inquiry",
+        "description": "Complete the contact form with your details and a brief explanation of the service you require."
+      },
+      "review": {
+        "title": "Initial Review",
+        "description": "Our office reviews your request and identifies the documents, authorities, or legal steps involved."
+      },
+      "handling": {
+        "title": "Document Handling",
+        "description": "We assist with notarization, translation, acquisition, apostille, or archive retrieval according to your case."
+      },
+      "delivery": {
+        "title": "Completion & Delivery",
+        "description": "Completed documents or legal services are delivered with clear guidance on any next steps."
+      }
+    }
+  },
+  "whyChoose": {
+    "eyebrow": "Why Choose Us",
+    "title": "Why Choose <brand></brand>",
+    "subtitle": "A law office focused on precision, authority, and international document matters — built on experience and professional standards.",
+    "items": {
+      "experienced": {
+        "title": "Experienced Law Office",
+        "description": "An established practice focused on legal, notarial, and document-related matters for clients in Israel and abroad."
+      },
+      "international": {
+        "title": "International Document Handling",
+        "description": "Support for obtaining, certifying, and preparing documents for use across multiple jurisdictions."
+      },
+      "authorities": {
+        "title": "Israeli & Foreign Authorities",
+        "description": "Coordination with relevant institutions in Israel and internationally to move your matter forward."
+      },
+      "communication": {
+        "title": "Clear Communication",
+        "description": "Professional guidance at each stage so you understand requirements, timelines, and deliverables."
+      },
+      "expertise": {
+        "title": "Legal & Notarial Expertise",
+        "description": "Comprehensive support spanning notarization, translations, apostilles, and related legal documentation."
+      },
+      "archive": {
+        "title": "Archive Experience",
+        "description": "Research and retrieval from archives in Israel, Germany, and Austria when historical records are required."
+      }
+    }
+  },
+  "cta": {
+    "title": "Need help with notarization, apostille, translation, or document retrieval?",
+    "subtitle": "Our office will review your inquiry and contact you with the next steps.",
+    "button": "Contact the Office"
+  },
+  "videos": {
+    "eyebrow": "Videos",
+    "title": "Learn More About Our Office",
+    "subtitle": "Watch short videos from our YouTube channel — click a preview to play without leaving the page.",
+    "showChannel": "Show <yt>YouTube</yt> channel",
+    "badge": "YouTube",
+    "items": {
+      "video1": {
+        "title": "<brand></brand> — Video 1",
+        "playLabel": "Play video: Decker Pex & Co. — Video 1"
+      },
+      "video2": {
+        "title": "<brand></brand> — Video 2",
+        "playLabel": "Play video: Decker Pex & Co. — Video 2"
+      },
+      "video3": {
+        "title": "<brand></brand> — Video 3",
+        "playLabel": "Play video: Decker Pex & Co. — Video 3"
+      }
+    }
+  },
+  "reviews": {
+    "eyebrow": "Client Reviews",
+    "title": "What Our Clients Say",
+    "source": "Source: Google",
+    "readMore": "Read more",
+    "showLess": "Show less",
+    "timeAgo": {
+      "liljana-p": "9 months ago",
+      "loenelywolf": "10 months ago",
+      "adi-katina": "2 years ago",
+      "shurouq-hajyassin": "3 years ago"
+    },
+    "items": {
+      "liljana-p": {
+        "text": "I was very impressed with Maxim Rapin's expertise. He handled my case with the utmost professionalism and was always available to answer my questions and address my concerns. Throughout my very complex legal case, he put me at ease and resolved the matter in a remarkably short time. I highly recommend both the law firm and lawyer Maxim Rapin. Thank you for the excellent service."
+      },
+      "loenelywolf": {
+        "text": "I have recently used this law firm for 1) apostille and translation service relating to a death certificate and 2) a simple notary service on an entirely different matter. I had no prior experience with this law firm other than seeing the occasional commercials on YouTube (not applicable to my situation) and recommendation by Google Search.\n\nWas Decker, Pex & Co the first law firm that I called? No, they were actually the second, BUT it took less than 5 minutes for me to decide to go with them. When I contacted the law firm via a WhatsApp text message, Netali, the paralegal from the Jerusalem branch, texted back with the swiftness, professionalism, and, most importantly to a foreigner, an English proficiency that was impressive, reassuring, and welcoming.\n\nThe law firm was very transparent with their pricings and, when appropriate, offered alternative solutions to minimize costs while achieving similar results. Netali was very patient, detailed in her explanations, and took great care to help me understand the process and manage my expectations. There was never a moment where I felt I was being pressured to sign with her law firm.\n\nAll in all, both their advice and service are reliable and consistent from initial consultation to execution to conclusion. Netali kept me informed throughout the process, and this meant a lot to me."
+      },
+      "adi-katina": {
+        "text": "Great Team. With no doubt, this office is actually thee best-leading office in Israel. Simply put, if you want your case to win, just join them, hand in your documents, and celebrate the victory.\n\nKindest regards,\nAdi k."
+      },
+      "shurouq-hajyassin": {
+        "text": "We were very satisfied with the consultation we had.\nYou were very straightforward with us , You tried to help us in every way you could . we really appreciate that.\nAnd of course the fast reply we got from you on our emails and the appointment you gave us .\nYou deserve more than 5 stars🤩"
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact Our Office",
+    "subtitleMinimal": "Submit your inquiry and we will respond with the next steps.",
+    "subtitleDefault": "Submit your inquiry and we will review your request and respond with the next steps.",
+    "fullName": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "countryCode": "Country code",
+    "placeholders": {
+      "name": "Your full name",
+      "email": "you@example.com",
+      "phone": "Phone number",
+      "message": "Briefly describe the service you need..."
+    },
+    "submit": "Submit Inquiry",
+    "submitting": "Submitting...",
+    "submitAnother": "Send another inquiry",
+    "success": {
+      "title": "Thank you, {{name}}",
+      "message": "Your inquiry has been received successfully. A member of the Decker Pex & Co. team will review your request and contact you shortly with the next steps.",
+      "note": "We appreciate your trust in our office."
+    },
+    "errors": {
+      "name": "Please enter your full name.",
+      "email": "Please enter your email address.",
+      "emailInvalid": "Please enter a valid email address.",
+      "phone": "Please enter your phone number.",
+      "submitFailed": "Unable to submit your inquiry. Please try again."
+    },
+    "countries": {
+      "il": "+972 Israel",
+      "us": "+1 United States",
+      "uk": "+44 United Kingdom",
+      "de": "+49 Germany",
+      "at": "+43 Austria"
+    }
+  },
+  "officeContact": {
+    "label": "Office contact",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "callDesktop": "073-789-5444",
+    "callMobile": "050-348-9649",
+    "needHelp": "Need help?",
+    "menu": "Contact options"
+  },
+  "footer": {
+    "firmName": "<brandOffice></brandOffice>",
+    "tagline": "Legal, notarial, translation & document services — Israel and worldwide.",
+    "copyright": "All rights reserved.",
+    "copyrightLine": "<brandOffice></brandOffice>",
+    "social": {
+      "youtube": "<brandYt></brandYt> on YouTube",
+      "facebook": "<brand></brand> on Facebook",
+      "linkedin": "<brandLinkedin></brandLinkedin> on LinkedIn"
+    },
+    "socialAria": {
+      "youtube": "Decker Pex Law Office on YouTube",
+      "facebook": "Decker Pex & Co. on Facebook",
+      "linkedin": "Decker, Pex & Co on LinkedIn"
+    }
+  },
+  "assets": {
+    "heroImageAlt": "Decker Pex & Co. Law Office — professional legal workspace",
+    "logoAlt": "Decker Pex & Co. Law Office",
+    "dunsAlt": "Dun & Bradstreet",
+    "bdiAlt": "BDI"
+  }
+}

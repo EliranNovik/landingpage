@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Page background — warm beige #F7F0E6 */
+:root {
+  --color-page-beige: #f7f0e6;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #f7f0e6 !important;
+  background-color: #f7f0e6 !important;
+}
+
+body {
+  margin: 0;
+  background: #f7f0e6 !important;
+  background-color: #f7f0e6 !important;
+}
+
+#root {
+  min-height: 100%;
+  background: #f7f0e6 !important;
+  background-color: #f7f0e6 !important;
+}
+
+.page-beige {
+  background: #f7f0e6 !important;
+  background-color: #f7f0e6 !important;
+}
+
+@layer components {
+  .scroll-reveal {
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .scroll-reveal--fade-up {
+    transform: translate3d(0, 28px, 0);
+  }
+
+  .scroll-reveal--fade-in {
+    transform: none;
+  }
+
+  .scroll-reveal--fade-left {
+    transform: translate3d(-32px, 0, 0);
+  }
+
+  .scroll-reveal--fade-right {
+    transform: translate3d(32px, 0, 0);
+  }
+
+  .scroll-reveal--scale-up {
+    transform: translate3d(0, 20px, 0) scale(0.97);
+  }
+
+  .scroll-reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  .glass-panel {
+    @apply rounded-2xl border border-white/25 bg-white/15 shadow-2xl shadow-black/20 backdrop-blur-2xl;
+  }
+
+  .glass-input {
+    @apply border-white/30 bg-white/20 text-white shadow-inner shadow-black/5 backdrop-blur-md placeholder:text-white/50 focus-visible:border-white/50 focus-visible:ring-white/25;
+  }
+
+  .glass-trust-panel {
+    @apply rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-sm leading-relaxed text-white/90 shadow-lg backdrop-blur-md;
+  }
+}
+
+@layer base {
+  body,
+  #root {
+    @apply font-sans text-charcoal antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-serif font-semibold;
+  }
+}

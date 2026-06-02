@@ -1,0 +1,13 @@
+{
+  "name": "decker-pex-landing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Decker Pex & Co. Law Office landing page",
+  "scripts": {
+    "install:all": "npm install --prefix client && npm install --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "build:client": "npm run build --prefix client",
+    "build:server": "npm run build --prefix server"
+  }
+}
