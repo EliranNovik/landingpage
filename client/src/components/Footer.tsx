@@ -22,11 +22,11 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal variant="fade-in">
           <div className="flex flex-col items-center gap-6 md:flex-row md:items-center md:justify-between md:gap-8">
-            <div className="w-full shrink-0 md:w-auto md:max-w-[50%]">
+            <div className="flex w-full shrink-0 justify-center md:w-auto md:max-w-[50%] md:justify-start">
               <img
                 src={footerLogo}
                 alt={t("assets.logoAlt")}
-                className="h-[4.5rem] w-auto max-w-[20rem] object-contain object-start sm:h-20 sm:max-w-[24rem] md:h-24 md:max-w-[28rem] lg:h-28 lg:max-w-[32rem]"
+                className="h-[4.5rem] w-auto max-w-[20rem] object-contain object-center sm:h-20 sm:max-w-[24rem] md:h-24 md:max-w-[28rem] md:object-start lg:h-28 lg:max-w-[32rem]"
                 decoding="async"
               />
             </div>
