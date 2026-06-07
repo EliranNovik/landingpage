@@ -5,6 +5,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { OfficeContactButtons } from "@/components/OfficeContactButtons";
 import { ProcessSection } from "@/components/ProcessSection";
 import { ReviewsSection } from "@/components/ReviewsSection";
+import { TeamSection } from "@/components/TeamSection";
 import { VideosSection } from "@/components/VideosSection";
 import { ServicesSection } from "@/components/ServicesSection";
 // import { WhyChooseUsSection } from "@/components/WhyChooseUsSection";
@@ -22,6 +23,7 @@ function App() {
           {/* <WhyChooseUsSection onDarkBackground /> */}
         </div>
         <CTASection />
+        <TeamSection />
         <VideosSection />
         <ReviewsSection />
       </main>

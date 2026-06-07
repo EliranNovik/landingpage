@@ -21,8 +21,8 @@ export function ReviewCard({ review, className }: ReviewCardProps) {
   return (
     <Card
       className={cn(
-        "flex h-auto w-[min(calc(100vw-2.5rem),20rem)] shrink-0 snap-center flex-col overflow-hidden border-cream-dark/90 bg-white shadow-md",
-        "sm:h-[21rem] sm:w-[22rem] sm:max-w-[22rem] sm:snap-start",
+        "flex h-auto w-[min(calc(100vw-2.5rem),20rem)] shrink-0 snap-start flex-col overflow-hidden border-cream-dark/90 bg-white shadow-md",
+        "sm:h-[21rem] sm:w-[22rem] sm:max-w-[22rem]",
         className
       )}
     >

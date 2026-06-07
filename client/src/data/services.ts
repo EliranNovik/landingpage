@@ -1,13 +1,16 @@
 import type { LucideIcon } from "lucide-react";
 import {
   BadgeCheck,
+  FilePen,
   FileText,
   Globe,
   Languages,
   Landmark,
+  Medal,
   Scale,
   Search,
   ShieldCheck,
+  Stamp,
 } from "lucide-react";
 
 export type ServiceItemId =
@@ -18,7 +21,10 @@ export type ServiceItemId =
   | "police"
   | "apostilles"
   | "foreignLaw"
-  | "archive";
+  | "archive"
+  | "epa"
+  | "notarizedPoA"
+  | "idfCertificates";
 
 export type ProcessStepId = "submit" | "review" | "handling" | "delivery";
 
@@ -31,6 +37,9 @@ export const serviceItems: { id: ServiceItemId; icon: LucideIcon }[] = [
   { id: "apostilles", icon: Landmark },
   { id: "foreignLaw", icon: Scale },
   { id: "archive", icon: Search },
+  { id: "epa", icon: FilePen },
+  { id: "notarizedPoA", icon: Stamp },
+  { id: "idfCertificates", icon: Medal },
 ];
 
 export const processItems: { id: ProcessStepId; step: number }[] = [
@@ -57,10 +66,3 @@ export const whyChoosePoints: { id: WhyChooseId }[] = [
   { id: "archive" },
 ];
 
-export const countryCodes = [
-  { value: "+972", labelKey: "il" },
-  { value: "+1", labelKey: "us" },
-  { value: "+44", labelKey: "uk" },
-  { value: "+49", labelKey: "de" },
-  { value: "+43", labelKey: "at" },
-] as const;

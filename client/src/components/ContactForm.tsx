@@ -5,22 +5,17 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { countryCodes } from "@/data/services";
+import type { CountryCode } from "libphonenumber-js/min";
+import { dialCodeForCountry } from "@/data/countryCallingCodes";
+import { PhoneCountrySelect } from "@/components/PhoneCountrySelect";
 import { combinePhoneNumber } from "@/lib/phone";
 import { cn } from "@/lib/utils";
 
 interface FormState {
   name: string;
   email: string;
-  countryCode: string;
+  countryIso: CountryCode;
   phone: string;
   message: string;
 }
@@ -28,7 +23,7 @@ interface FormState {
 const initialForm: FormState = {
   name: "",
   email: "",
-  countryCode: "+972",
+  countryIso: "IL",
   phone: "",
   message: "",
 };
@@ -98,7 +93,10 @@ export function ContactForm({
         body: JSON.stringify({
           name: form.name.trim(),
           email: form.email.trim(),
-          phone: combinePhoneNumber(form.countryCode, form.phone),
+          phone: combinePhoneNumber(
+            dialCodeForCountry(form.countryIso),
+            form.phone
+          ),
           facts: form.message.trim(),
         }),
       });
@@ -259,30 +257,16 @@ export function ContactForm({
               {t("contact.phone")}
             </Label>
             <div className="flex gap-4">
-              <Select
-                value={form.countryCode}
-                onValueChange={(value) =>
-                  setForm((prev) => ({ ...prev, countryCode: value }))
+              <PhoneCountrySelect
+                value={form.countryIso}
+                onChange={(countryIso) =>
+                  setForm((prev) => ({ ...prev, countryIso }))
                 }
                 disabled={loading}
-              >
-                <SelectTrigger
-                  className={cn(
-                    isMinimal ? minimalSelectClass : "w-[140px] shrink-0",
-                    isRtl && "flex-row-reverse text-right [&>span]:text-right"
-                  )}
-                  aria-label={t("contact.countryCode")}
-                >
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {countryCodes.map((code) => (
-                    <SelectItem key={code.value} value={code.value}>
-                      {t(`contact.countries.${code.labelKey}`)}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                isRtl={isRtl}
+                isMinimal={isMinimal}
+                triggerClassName={isMinimal ? minimalSelectClass : undefined}
+              />
               <Input
                 id="phone"
                 name="phone"

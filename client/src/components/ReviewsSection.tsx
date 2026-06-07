@@ -1,7 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { ReviewCard } from "@/components/ReviewCard";
-import { SCROLL_STAGGER_MS, ScrollReveal } from "@/components/ScrollReveal";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { googleReviews } from "@/data/reviews";
+import { cn } from "@/lib/utils";
 
 export function ReviewsSection() {
   const { t } = useTranslation();
@@ -24,23 +25,23 @@ export function ReviewsSection() {
           </div>
           <p className="text-sm text-muted">{t("reviews.source")}</p>
         </ScrollReveal>
+      </div>
 
-        <div
-          className="mt-10 -mx-4 flex flex-nowrap items-stretch gap-4 overflow-x-auto px-4 pb-3 scroll-smooth snap-x snap-mandatory sm:mx-0 sm:gap-5 sm:px-0 lg:gap-6 [-ms-overflow-style:none] [scrollbar-width:thin] [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-cream-dark [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-cream-dark/30"
-          tabIndex={0}
-          aria-label="Client reviews — scroll horizontally"
-        >
-          {googleReviews.map((review, index) => (
-            <ScrollReveal
-              key={review.id}
-              delay={index * SCROLL_STAGGER_MS}
-              variant="fade-right"
-              className="block shrink-0 snap-center sm:snap-start"
-            >
-              <ReviewCard review={review} />
-            </ScrollReveal>
-          ))}
-        </div>
+      <div
+        className={cn(
+          "reviews-carousel mt-10 flex w-full flex-nowrap items-stretch gap-4 overflow-x-auto pb-3",
+          "scroll-smooth snap-x snap-mandatory sm:gap-5 lg:gap-6",
+          "[-ms-overflow-style:none] [scrollbar-width:thin]",
+          "[&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full",
+          "[&::-webkit-scrollbar-thumb]:bg-cream-dark [&::-webkit-scrollbar-track]:rounded-full",
+          "[&::-webkit-scrollbar-track]:bg-cream-dark/30"
+        )}
+        tabIndex={0}
+        aria-label="Client reviews — scroll horizontally"
+      >
+        {googleReviews.map((review) => (
+          <ReviewCard key={review.id} review={review} />
+        ))}
       </div>
     </section>
   );

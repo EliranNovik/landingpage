@@ -19,7 +19,8 @@ interface HeaderProps {
 }
 
 export function Header({ overlay = false }: HeaderProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isHebrew = i18n.language.startsWith("he");
 
   return (
     <header
@@ -39,26 +40,22 @@ export function Header({ overlay = false }: HeaderProps) {
             overlay ? "text-white" : "text-charcoal"
           )}
         >
-          <span
-            className="flex h-11 shrink-0 items-center justify-center rounded-lg bg-accent px-2.5 shadow-md sm:h-12 sm:px-3 md:h-14 md:px-4"
-            aria-hidden
-          >
-            <img
-              src={siteLogo}
-              alt=""
-              className="h-7 w-auto max-w-[5.5rem] object-contain object-center mix-blend-screen sm:h-8 sm:max-w-[6.5rem] md:h-10 md:max-w-[8.5rem]"
-              decoding="async"
-            />
-          </span>
-          <span className="sr-only">{siteLogoAlt}</span>
-          <span
-            className={cn(
-              "hidden font-serif text-lg font-semibold sm:inline md:text-xl lg:text-2xl",
-              overlay ? "text-white" : "text-charcoal"
-            )}
-          >
-            <Ltr>{BRAND_SHORT}</Ltr>
-          </span>
+          <img
+            src={siteLogo}
+            alt={siteLogoAlt}
+            className="h-12 w-auto max-w-[10.5rem] shrink-0 object-contain object-center sm:h-14 sm:max-w-[12.5rem] md:h-16 md:max-w-[14.5rem] lg:max-w-[16rem]"
+            decoding="async"
+          />
+          {!isHebrew && (
+            <span
+              className={cn(
+                "hidden font-serif text-lg font-semibold sm:inline md:text-xl lg:text-2xl",
+                overlay ? "text-white" : "text-charcoal"
+              )}
+            >
+              <Ltr>{BRAND_SHORT}</Ltr>
+            </span>
+          )}
         </a>
 
         <div className="flex items-center gap-3 md:ml-auto md:gap-5">

@@ -31,6 +31,32 @@ body {
 }
 
 @layer components {
+  .reviews-carousel {
+    padding-inline: 1rem;
+    scroll-padding-inline: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .reviews-carousel {
+      padding-inline: 1.5rem;
+      scroll-padding-inline: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .reviews-carousel {
+      padding-inline: 2rem;
+      scroll-padding-inline: 2rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .reviews-carousel {
+      padding-inline: 2.5rem;
+      scroll-padding-inline: 2.5rem;
+    }
+  }
+
   .scroll-reveal {
     opacity: 0;
     transition-property: opacity, transform;

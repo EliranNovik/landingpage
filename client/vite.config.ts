@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "path";
 
 function dynamicOgAbsoluteUrls(): Plugin {
-  const ogImagePath = "/DPL-LOGO1.png?v=3";
+  const ogImagePath = "/site-logo.png?v=5";
 
   const toAbsolute = (origin: string, url: string) => {
     if (!url.startsWith("/")) return url;

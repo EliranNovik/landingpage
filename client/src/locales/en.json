@@ -15,14 +15,14 @@
   },
   "hero": {
     "firmLabel": "Decker Pex & Co.",
-    "title": "Legal, Notarial & Document Services",
-    "summary": "We assist with notarization, certified translations, and document acquisition from authorities in Israel and worldwide — including apostilles, FBI and police records, legal opinions on foreign law, and archive research in Israel, Germany, and Austria.",
+    "title": "Need Help with Notarization or Legal Documents?",
+    "summary": "For 20 years, we have helped our clients with notarization signings, translations, and document issuance in Israel and worldwide — including apostille, police certificate of integrity, FBI certification, legal opinions on foreign law, and document retrieval in Israel, Germany, Austria, and more.",
     "viewServices": "View all services"
   },
   "services": {
     "eyebrow": "Our Services",
-    "title": "Comprehensive Legal & Document Support",
-    "subtitle": "Professional assistance across notarial, translation, acquisition, and certification matters — delivered with clarity and care.",
+    "title": "Need Help with Notarization or Legal Documents?",
+    "subtitle": "For 20 years, we have helped our clients with notarization signings, translations, and document issuance in Israel and worldwide — including apostille, police certificate of integrity, FBI certification, legal opinions on foreign law, and document retrieval in Israel, Germany, Austria, and more.",
     "items": {
       "notarial": {
         "title": "Notarial Services",
@@ -41,8 +41,8 @@
         "description": "Support with FBI background check requests and related document preparation."
       },
       "police": {
-        "title": "Police Records",
-        "description": "Assistance obtaining police records and official certificates from relevant authorities."
+        "title": "Police Records / Certificate of Integrity",
+        "description": "Assistance obtaining police records, certificate of integrity, and other official certificates from relevant authorities."
       },
       "apostilles": {
         "title": "Apostilles",
@@ -55,6 +55,18 @@
       "archive": {
         "title": "Archive Research",
         "description": "Search and retrieval of documents from archives in Israel, Germany, and Austria."
+      },
+      "epa": {
+        "title": "Enduring Power of Attorney (EPA)",
+        "description": "Preparation and notarization of enduring power of attorney documents for ongoing legal representation."
+      },
+      "notarizedPoA": {
+        "title": "Notarized Power of Attorney",
+        "description": "Notarized power of attorney documents for personal, legal, and administrative matters in Israel and abroad."
+      },
+      "idfCertificates": {
+        "title": "IDF Service Certificates",
+        "description": "Assistance obtaining official IDF service certificates and related military documentation."
       }
     }
   },
@@ -117,6 +129,12 @@
     "subtitle": "Our office will review your inquiry and contact you with the next steps.",
     "button": "Contact the Office"
   },
+  "team": {
+    "eyebrow": "Our Team",
+    "title": "A Professional Team You Can Trust",
+    "subtitle": "For two decades, our office has supported clients in Israel and worldwide with notarial, legal, and document services — with personal attention, experience, and professional standards.",
+    "imageAlt": "Decker Pex & Co. law office — professional team"
+  },
   "videos": {
     "eyebrow": "Videos",
     "title": "Learn More About Our Office",
@@ -145,15 +163,11 @@
     "readMore": "Read more",
     "showLess": "Show less",
     "timeAgo": {
-      "liljana-p": "9 months ago",
       "loenelywolf": "10 months ago",
       "adi-katina": "2 years ago",
       "shurouq-hajyassin": "3 years ago"
     },
     "items": {
-      "liljana-p": {
-        "text": "I was very impressed with Maxim Rapin's expertise. He handled my case with the utmost professionalism and was always available to answer my questions and address my concerns. Throughout my very complex legal case, he put me at ease and resolved the matter in a remarkably short time. I highly recommend both the law firm and lawyer Maxim Rapin. Thank you for the excellent service."
-      },
       "loenelywolf": {
         "text": "I have recently used this law firm for 1) apostille and translation service relating to a death certificate and 2) a simple notary service on an entirely different matter. I had no prior experience with this law firm other than seeing the occasional commercials on YouTube (not applicable to my situation) and recommendation by Google Search.\n\nWas Decker, Pex & Co the first law firm that I called? No, they were actually the second, BUT it took less than 5 minutes for me to decide to go with them. When I contacted the law firm via a WhatsApp text message, Netali, the paralegal from the Jerusalem branch, texted back with the swiftness, professionalism, and, most importantly to a foreigner, an English proficiency that was impressive, reassuring, and welcoming.\n\nThe law firm was very transparent with their pricings and, when appropriate, offered alternative solutions to minimize costs while achieving similar results. Netali was very patient, detailed in her explanations, and took great care to help me understand the process and manage my expectations. There was never a moment where I felt I was being pressured to sign with her law firm.\n\nAll in all, both their advice and service are reliable and consistent from initial consultation to execution to conclusion. Netali kept me informed throughout the process, and this meant a lot to me."
       },
@@ -194,13 +208,6 @@
       "emailInvalid": "Please enter a valid email address.",
       "phone": "Please enter your phone number.",
       "submitFailed": "Unable to submit your inquiry. Please try again."
-    },
-    "countries": {
-      "il": "+972 Israel",
-      "us": "+1 United States",
-      "uk": "+44 United Kingdom",
-      "de": "+49 Germany",
-      "at": "+43 Austria"
     }
   },
   "officeContact": {

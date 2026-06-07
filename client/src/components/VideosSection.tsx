@@ -7,14 +7,16 @@ import { VideoModal } from "@/components/VideoModal";
 import { SCROLL_STAGGER_MS, ScrollReveal } from "@/components/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import {
+  getYouTubeVideos,
   youtubeChannelUrl,
-  youtubeVideos,
   type YouTubeVideo,
 } from "@/data/videos";
+import { cn } from "@/lib/utils";
 
 export function VideosSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [activeVideo, setActiveVideo] = useState<YouTubeVideo | null>(null);
+  const videos = getYouTubeVideos(i18n.language);
 
   const activeTitleKey = activeVideo
     ? `videos.items.${activeVideo.contentKey}.title`
@@ -55,8 +57,15 @@ export function VideosSection() {
           </Button>
         </ScrollReveal>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-          {youtubeVideos.map((video, index) => (
+        <div
+          className={cn(
+            "mt-10 grid gap-6",
+            videos.length === 2
+              ? "mx-auto max-w-3xl sm:grid-cols-2"
+              : "sm:grid-cols-2 lg:grid-cols-3 lg:gap-8"
+          )}
+        >
+          {videos.map((video, index) => (
             <ScrollReveal key={video.id} delay={index * SCROLL_STAGGER_MS}>
               <VideoCard
                 video={video}

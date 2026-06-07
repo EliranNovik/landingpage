@@ -27,6 +27,28 @@ export const youtubeVideos: YouTubeVideo[] = [
   },
 ];
 
+export const youtubeVideosHe: YouTubeVideo[] = [
+  {
+    id: "N9-7AJl6s-E",
+    contentKey: "video1",
+    watchUrl: "https://www.youtube.com/watch?v=N9-7AJl6s-E",
+  },
+  {
+    id: "eO1M81LKMYE",
+    contentKey: "video2",
+    watchUrl: "https://www.youtube.com/watch?v=eO1M81LKMYE",
+  },
+  {
+    id: "pByAC9ndY9I",
+    contentKey: "video3",
+    watchUrl: "https://www.youtube.com/watch?v=pByAC9ndY9I",
+  },
+];
+
+export function getYouTubeVideos(language: string): YouTubeVideo[] {
+  return language.startsWith("he") ? youtubeVideosHe : youtubeVideos;
+}
+
 export function youtubeThumbnailUrl(
   videoId: string,
   quality: "maxresdefault" | "hqdefault" = "hqdefault"

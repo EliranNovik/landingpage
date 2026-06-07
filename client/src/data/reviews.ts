@@ -8,13 +8,6 @@ export interface Review {
 
 export const googleReviews: Review[] = [
   {
-    id: "liljana-p",
-    author: "Liljana P.",
-    initials: "LP",
-    avatarClass: "bg-accent text-white",
-    rating: 5,
-  },
-  {
     id: "loenelywolf",
     author: "LoenelyWolf",
     initials: "LW",
