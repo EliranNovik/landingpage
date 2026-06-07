@@ -14,7 +14,8 @@ export const heroOfficeImageAlt =
   "Decker Pex & Co. Law Office — notarial workspace with legal documents, notary journal, and law library";
 
 /** Team profile / group photo */
-export const teamPhoto = "/Gemini_Generated_Image_6sy5re6sy5re6sy5.png";
+export const teamPhoto =
+  "/686538413_1583535060443204_3287061484085022198_n.jpg";
 
 export const dunsLogo = "/duns1002png.png";
 
