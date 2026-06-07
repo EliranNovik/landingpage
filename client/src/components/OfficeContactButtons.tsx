@@ -18,15 +18,24 @@ function WhatsAppIcon({ className }: { className?: string }) {
   );
 }
 
-const contactButtonClass =
-  "bg-accent text-white shadow-md shadow-accent/20 ring-1 ring-black/5 transition-[transform,background-color,box-shadow] duration-200 ease-out hover:scale-105 hover:bg-accent-hover hover:shadow-lg active:scale-[0.97]";
+const contactIconBase =
+  "text-white shadow-md ring-1 ring-black/5 transition-[transform,background-color,box-shadow] duration-200 ease-out hover:scale-105 hover:shadow-lg active:scale-[0.97]";
 
-const contactMenuIconClass =
-  "bg-accent text-white shadow-sm transition-colors duration-150 hover:bg-accent-hover";
+const contactIconStyles = {
+  whatsapp:
+    "bg-[#25D366] shadow-[#25D366]/25 hover:bg-[#20bd5a]",
+  email:
+    "bg-[#2563eb] shadow-[#2563eb]/25 hover:bg-[#1d4ed8]",
+  phone:
+    "bg-white text-accent shadow-black/10 ring-cream-dark/60 hover:bg-cream",
+} as const;
+
+type ContactIconId = keyof typeof contactIconStyles;
 
 interface ContactLinkProps {
   href: string;
   ariaLabel: string;
+  iconId: ContactIconId;
   external?: boolean;
   children: ReactNode;
 }
@@ -34,6 +43,7 @@ interface ContactLinkProps {
 function ContactLink({
   href,
   ariaLabel,
+  iconId,
   external,
   children,
 }: ContactLinkProps) {
@@ -44,7 +54,8 @@ function ContactLink({
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className={cn(
         "flex h-14 w-14 items-center justify-center rounded-full",
-        contactButtonClass
+        contactIconBase,
+        contactIconStyles[iconId]
       )}
     >
       {children}
@@ -60,7 +71,7 @@ function MobileContactDropdown() {
   const { email, whatsappUrl, phoneMobile } = OFFICE_CONTACT;
 
   const menuItems: {
-    id: string;
+    id: ContactIconId;
     href: string;
     label: ReactNode;
     external?: boolean;
@@ -141,8 +152,8 @@ function MobileContactDropdown() {
           >
             <span
               className={cn(
-                "flex h-10 w-10 shrink-0 items-center justify-center rounded-full",
-                contactMenuIconClass
+                "flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white shadow-sm transition-colors duration-150",
+                contactIconStyles[item.id]
               )}
             >
               {item.icon}
@@ -186,6 +197,7 @@ export function OfficeContactButtons() {
         <ContactLink
           href={whatsappUrl}
           ariaLabel={t("officeContact.whatsapp")}
+          iconId="whatsapp"
           external
         >
           <WhatsAppIcon className="h-6 w-6" />
@@ -193,12 +205,14 @@ export function OfficeContactButtons() {
         <ContactLink
           href={`mailto:${email}`}
           ariaLabel={t("officeContact.email")}
+          iconId="email"
         >
           <Mail className="h-6 w-6" strokeWidth={1.75} />
         </ContactLink>
         <ContactLink
           href={`tel:${phoneDesktop}`}
           ariaLabel={t("officeContact.callDesktop")}
+          iconId="phone"
         >
           <Phone className="h-6 w-6" strokeWidth={1.75} />
         </ContactLink>

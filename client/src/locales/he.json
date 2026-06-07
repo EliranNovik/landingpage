@@ -143,16 +143,16 @@
     "badge": "YouTube",
     "items": {
       "video1": {
-        "title": "<brand></brand> — סרטון 1",
-        "playLabel": "הפעלת סרטון: \u200eDecker Pex & Co.\u200e — סרטון 1"
+        "title": "נוטריון בתל אביב #notary #נוטריון #shortsvideo #שורטס #israeli_notary #אפוסטיל #עורךדין",
+        "playLabel": "הפעלת סרטון: נוטריון בתל אביב"
       },
       "video2": {
-        "title": "<brand></brand> — סרטון 2",
-        "playLabel": "הפעלת סרטון: \u200eDecker Pex & Co.\u200e — סרטון 2"
+        "title": "מחשבון תרגום נוטריוני",
+        "playLabel": "הפעלת סרטון: מחשבון תרגום נוטריוני"
       },
       "video3": {
-        "title": "<brand></brand> — סרטון 3",
-        "playLabel": "הפעלת סרטון: \u200eDecker Pex & Co.\u200e — סרטון 3"
+        "title": "נוטריון - חתימת אפוסטיל",
+        "playLabel": "הפעלת סרטון: נוטריון - חתימת אפוסטיל"
       }
     }
   },

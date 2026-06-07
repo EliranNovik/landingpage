@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { X } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { BrandTrans } from "@/components/BrandTrans";
 import type { YouTubeVideo } from "@/data/videos";
 import { youtubeEmbedUrl } from "@/data/videos";
 
@@ -76,8 +75,8 @@ export function VideoModal({
           </div>
         </div>
         {titleKey ? (
-          <p className="mt-3 text-center text-sm text-white/90">
-            <BrandTrans i18nKey={titleKey} />
+          <p className="mt-3 line-clamp-3 text-center text-sm text-white/90">
+            {t(titleKey)}
           </p>
         ) : null}
       </div>

@@ -143,16 +143,16 @@
     "badge": "YouTube",
     "items": {
       "video1": {
-        "title": "<brand></brand> — Video 1",
-        "playLabel": "Play video: Decker Pex & Co. — Video 1"
+        "title": "Notary in Tel Aviv",
+        "playLabel": "Play video: Notary in Tel Aviv"
       },
       "video2": {
-        "title": "<brand></brand> — Video 2",
-        "playLabel": "Play video: Decker Pex & Co. — Video 2"
+        "title": "Navigating War and Law: Decker, Pex, Levi Stays the Course",
+        "playLabel": "Play video: Navigating War and Law: Decker, Pex, Levi Stays the Course"
       },
       "video3": {
-        "title": "<brand></brand> — Video 3",
-        "playLabel": "Play video: Decker Pex & Co. — Video 3"
+        "title": "Aliyah to Israel after the application was rejected by the Interior Ministry - A success story",
+        "playLabel": "Play video: Aliyah to Israel after the application was rejected by the Interior Ministry - A success story"
       }
     }
   },
