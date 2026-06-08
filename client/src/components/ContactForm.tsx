@@ -11,6 +11,7 @@ import { dialCodeForCountry } from "@/data/countryCallingCodes";
 import { PhoneCountrySelect } from "@/components/PhoneCountrySelect";
 import { combinePhoneNumber } from "@/lib/phone";
 import { apiUrl } from "@/lib/api";
+import { getSourceCodeForSubmit } from "@/lib/sourceCode";
 import { cn } from "@/lib/utils";
 
 interface FormState {
@@ -99,6 +100,7 @@ export function ContactForm({
             form.phone
           ),
           facts: form.message.trim(),
+          source_code: getSourceCodeForSubmit(),
         }),
       });
 
@@ -214,7 +216,13 @@ export function ContactForm({
           )}
           noValidate
         >
-          <input type="hidden" name="source_code" value="1" readOnly tabIndex={-1} />
+          <input
+            type="hidden"
+            name="source_code"
+            value={getSourceCodeForSubmit()}
+            readOnly
+            tabIndex={-1}
+          />
 
           <div className="space-y-2">
             <Label htmlFor="name" className={labelClass}>

@@ -3,23 +3,27 @@ export interface LeadWebhookPayload {
   email: string;
   phone: string;
   facts: string;
+  source_code?: string;
 }
 
 const DEFAULT_WEBHOOK_URL =
   "https://leadify-crm-backend.onrender.com/api/hook/catch";
 
-const DEFAULT_SOURCE_CODE = "1";
+const DEFAULT_SOURCE_CODE = "43225";
 
 const WEBHOOK_URL = process.env.LEAD_WEBHOOK_URL ?? DEFAULT_WEBHOOK_URL;
 
 const WEBHOOK_TIMEOUT_MS = 20_000;
 
 function buildWebhookBody(lead: LeadWebhookPayload): Record<string, unknown> {
+  const { source_code: clientSourceCode, ...leadFields } = lead;
   const sourceCode =
-    process.env.LEAD_SOURCE_CODE?.trim() || DEFAULT_SOURCE_CODE;
+    clientSourceCode?.trim() ||
+    process.env.LEAD_SOURCE_CODE?.trim() ||
+    DEFAULT_SOURCE_CODE;
 
   return {
-    ...lead,
+    ...leadFields,
     source_code: sourceCode,
   };
 }

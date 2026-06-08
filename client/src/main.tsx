@@ -1,8 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
+import { captureCampaignFromUrl } from "@/lib/sourceCode";
 import "./i18n";
 import "./index.css";
+
+captureCampaignFromUrl();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

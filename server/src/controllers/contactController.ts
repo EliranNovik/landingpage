@@ -12,6 +12,7 @@ interface ContactBody {
   facts?: string;
   /** @deprecated Use `facts` */
   message?: string;
+  source_code?: string;
 }
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -72,7 +73,14 @@ export async function submitContact(
     return;
   }
 
-  const lead = { name, email, phone, facts };
+  const sourceCode = body.source_code?.trim();
+  const lead = {
+    name,
+    email,
+    phone,
+    facts,
+    ...(sourceCode ? { source_code: sourceCode } : {}),
+  };
 
   try {
     await sendLeadToWebhook(lead);
