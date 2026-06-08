@@ -22,10 +22,11 @@ void i18n
       he: { translation: he },
     },
     fallbackLng: "en",
+    lng: "he",
     supportedLngs: [...supportedLanguages],
     interpolation: { escapeValue: false },
     detection: {
-      order: ["localStorage", "navigator"],
+      order: ["localStorage"],
       caches: ["localStorage"],
       lookupLocalStorage: "dp-language",
     },

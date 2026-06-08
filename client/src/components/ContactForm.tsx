@@ -10,6 +10,7 @@ import type { CountryCode } from "libphonenumber-js/min";
 import { dialCodeForCountry } from "@/data/countryCallingCodes";
 import { PhoneCountrySelect } from "@/components/PhoneCountrySelect";
 import { combinePhoneNumber } from "@/lib/phone";
+import { apiUrl } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 interface FormState {
@@ -87,7 +88,7 @@ export function ContactForm({
 
     setLoading(true);
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(apiUrl("/api/contact"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -129,6 +129,43 @@ cd client && npm run build
 cd ../server && npm run build && npm start
 ```
 
+## Deployment (Vercel)
+
+### Frontend (`services.lawoffice.org.il`)
+
+| Setting | Value |
+| -------- | ----- |
+| Root Directory | `client` |
+| Framework | Vite |
+| Build Command | `npm run build` |
+| Output Directory | `dist` |
+
+Optional env (also set in `client/.env.production`):
+
+- `VITE_API_URL` = `https://landingpage-backend-dp.vercel.app`
+
+### Backend (`landingpage-backend-dp.vercel.app`)
+
+| Setting | Value |
+| -------- | ----- |
+| Root Directory | `server` |
+| Framework | Other |
+
+The backend uses `server/api/index.ts` as a Vercel serverless Express app (not `app.listen()`).
+
+**Environment variables (Vercel → backend project):**
+
+| Variable | Value |
+| -------- | ----- |
+| `FRONTEND_URL` | `https://services.lawoffice.org.il` |
+| `ALLOWED_ORIGINS` | `https://services.lawoffice.org.il,https://landingpage-flax-xi.vercel.app` (optional; comma-separated extras) |
+| `LEAD_WEBHOOK_URL` | optional override |
+| `LEAD_SOURCE_CODE` | `1` (default) |
+
+After redeploy, test:
+
+- `https://landingpage-backend-dp.vercel.app/api/health` → `{"status":"ok"}`
+
 Serve the `client/dist` folder with your preferred static host and run the Express server for API routes (configure reverse proxy for `/api`).
 
 ## Page Sections
