@@ -97,15 +97,16 @@ export function PhoneCountrySelect({
     >
       <SelectTrigger
         className={cn(
-          isMinimal ? "h-11 w-[7.5rem] shrink-0 rounded-xl" : "w-[10.5rem] shrink-0",
+          isMinimal ? "h-11 shrink-0 rounded-xl" : "shrink-0",
           isRtl && "flex-row-reverse text-right [&>span]:text-right",
-          triggerClassName
+          triggerClassName,
+          isMinimal ? "w-[5.25rem]" : "w-[5.5rem]"
         )}
         aria-label={t("contact.countryCode")}
       >
         <SelectValue>
           {selected
-            ? formatCountryOptionLabel(selected, !!isRtl)
+            ? formatCountryOptionLabel(selected, !!isRtl, true)
             : undefined}
         </SelectValue>
       </SelectTrigger>

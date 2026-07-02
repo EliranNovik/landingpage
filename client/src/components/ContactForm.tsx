@@ -22,13 +22,13 @@ interface FormState {
   message: string;
 }
 
-const initialForm: FormState = {
+const getInitialForm = (language: string): FormState => ({
   name: "",
   email: "",
-  countryIso: "IL",
+  countryIso: language.startsWith("he") ? "IL" : "US",
   phone: "",
   message: "",
-};
+});
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -36,7 +36,7 @@ const minimalInputClass =
   "h-11 rounded-xl border border-cream-dark/80 bg-white px-4 shadow-sm focus-visible:border-accent focus-visible:ring-2 focus-visible:ring-accent/25";
 
 const minimalSelectClass =
-  "h-11 w-[7.5rem] shrink-0 rounded-xl border border-cream-dark/80 bg-white px-3 shadow-sm focus:ring-2 focus:ring-accent/25";
+  "h-11 shrink-0 rounded-xl border border-cream-dark/80 bg-white px-3 shadow-sm focus:ring-2 focus:ring-accent/25";
 
 const minimalMessageClass =
   "min-h-[120px] resize-none rounded-xl border border-cream-dark/80 bg-white px-4 py-3 shadow-sm focus-visible:border-accent focus-visible:ring-2 focus-visible:ring-accent/25";
@@ -61,7 +61,7 @@ export function ContactForm({
   const fieldAlignClass = isRtl
     ? "w-full text-right placeholder:text-right"
     : "w-full";
-  const [form, setForm] = useState<FormState>(initialForm);
+  const [form, setForm] = useState<FormState>(() => getInitialForm(i18n.language));
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -112,7 +112,7 @@ export function ContactForm({
 
       setSubmittedName(form.name.trim());
       setSuccess(true);
-      setForm(initialForm);
+      setForm(getInitialForm(i18n.language));
     } catch (err) {
       setError(
         err instanceof Error ? err.message : t("contact.errors.submitFailed")

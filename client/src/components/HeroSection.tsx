@@ -4,7 +4,8 @@ import { ContactForm } from "@/components/ContactForm";
 import { Ltr } from "@/components/Ltr";
 import { BRAND_SHORT } from "@/data/brand";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { bdiLogo, dunsLogo, heroOfficeImage } from "@/data/assets";
+import { bdiLogo, dunsLogo, heroOfficeImage, siteLogo, siteLogoAlt } from "@/data/assets";
+import { useHeroLogoInView } from "@/hooks/useHeroLogoInView";
 import { cn } from "@/lib/utils";
 
 const PAGE_BEIGE = "#f7f0e6";
@@ -16,9 +17,14 @@ const dunsLogoClass = `${partnerLogoShadow} relative z-10 h-14 w-[10.5rem] sm:h-
 
 const bdiLogoClass = `${partnerLogoShadow} h-12 w-[9rem] sm:h-12 sm:w-[10rem]`;
 
-export function HeroSection() {
+interface HeroSectionProps {
+  onHeroLogoInViewChange?: (inView: boolean) => void;
+}
+
+export function HeroSection({ onHeroLogoInViewChange }: HeroSectionProps) {
   const { t, i18n } = useTranslation();
   const isRtl = i18n.language.startsWith("he");
+  const heroLogoRef = useHeroLogoInView(onHeroLogoInViewChange);
 
   const scrollToServices = () => {
     document.getElementById("services")?.scrollIntoView({
@@ -120,18 +126,31 @@ export function HeroSection() {
           "page-beige flex flex-col justify-center px-6 py-12 sm:px-10 sm:py-14 lg:py-12",
           isRtl
             ? "items-start lg:ps-10 lg:pe-5 xl:ps-12 xl:pe-6"
-            : "lg:px-10 xl:px-12"
+            : "items-start lg:px-10 xl:px-12"
         )}
         style={{ backgroundColor: PAGE_BEIGE }}
       >
         <ScrollReveal
           variant="fade-left"
           delay={150}
-          className={cn(
-            "w-full max-w-md lg:max-w-lg",
-            isRtl ? "me-auto ms-0" : "mx-auto"
-          )}
+          className="w-full max-w-md lg:max-w-lg"
         >
+          <div
+            ref={heroLogoRef}
+            className={cn(
+              "mb-8 hidden w-full lg:flex",
+              isRtl ? "justify-end" : "justify-start"
+            )}
+          >
+            <a href="#" className="inline-flex">
+              <img
+                src={siteLogo}
+                alt={siteLogoAlt}
+                className="h-20 w-auto max-w-[16rem] object-contain object-left sm:h-24 sm:max-w-[18rem] lg:h-32 lg:max-w-[22rem]"
+                decoding="async"
+              />
+            </a>
+          </div>
           <ContactForm variant="minimal" />
         </ScrollReveal>
       </div>

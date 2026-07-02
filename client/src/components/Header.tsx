@@ -1,9 +1,7 @@
 import { Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { Ltr } from "@/components/Ltr";
 import { siteLogo, siteLogoAlt } from "@/data/assets";
-import { BRAND_SHORT } from "@/data/brand";
 import { cn } from "@/lib/utils";
 
 const navLinkKeys = [
@@ -16,9 +14,10 @@ const navLinkKeys = [
 
 interface HeaderProps {
   overlay?: boolean;
+  showLogo?: boolean;
 }
 
-export function Header({ overlay = false }: HeaderProps) {
+export function Header({ overlay = false, showLogo = true }: HeaderProps) {
   const { t, i18n } = useTranslation();
   const isHebrew = i18n.language.startsWith("he");
 
@@ -35,27 +34,27 @@ export function Header({ overlay = false }: HeaderProps) {
       <div className="flex w-full items-center justify-between gap-3 px-4 py-3 sm:px-6 md:px-8 lg:px-10">
         <a
           href="#"
+          aria-hidden={!showLogo}
+          tabIndex={showLogo ? 0 : -1}
           className={cn(
             "flex shrink-0 items-center gap-3 no-underline md:gap-4",
-            overlay ? "text-white" : "text-charcoal"
+            overlay ? "text-white" : "text-charcoal",
+            !showLogo && "max-lg:pointer-events-auto lg:pointer-events-none"
           )}
         >
           <img
             src={siteLogo}
             alt={siteLogoAlt}
-            className="h-12 w-auto max-w-[10.5rem] shrink-0 object-contain object-center sm:h-14 sm:max-w-[12.5rem] md:h-16 md:max-w-[14.5rem] lg:max-w-[16rem]"
+            className={cn(
+              "h-12 w-auto max-w-[10.5rem] shrink-0 object-contain object-center sm:h-14 sm:max-w-[12.5rem] md:h-16 md:max-w-[14.5rem] lg:max-w-[16rem]",
+              "max-lg:opacity-100",
+              "transition-[opacity,max-width,height] duration-300 ease-out lg:transition-[opacity,max-width,height]",
+              showLogo
+                ? "lg:opacity-100"
+                : "lg:h-0 lg:max-h-0 lg:max-w-0 lg:opacity-0"
+            )}
             decoding="async"
           />
-          {!isHebrew && (
-            <span
-              className={cn(
-                "hidden font-serif text-lg font-semibold sm:inline md:text-xl lg:text-2xl",
-                overlay ? "text-white" : "text-charcoal"
-              )}
-            >
-              <Ltr>{BRAND_SHORT}</Ltr>
-            </span>
-          )}
         </a>
 
         <div
