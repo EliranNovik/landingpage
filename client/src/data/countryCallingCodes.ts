@@ -58,8 +58,10 @@ export function dialCodeForCountry(iso: CountryCode): string {
 
 export function formatCountryOptionLabel(
   option: CountryCallingCodeOption,
-  rtl: boolean
+  rtl: boolean,
+  codeOnly = false
 ): string {
   const code = rtl ? `\u200e${option.dialCode}\u200e` : option.dialCode;
+  if (codeOnly) return code;
   return `${code} ${option.name}`;
 }

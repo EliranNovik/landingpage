@@ -40,22 +40,34 @@ export function ServicesSection({ onDarkBackground }: ServicesSectionProps) {
             {t("services.subtitle")}
           </p>
         </ScrollReveal>
+      </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {serviceItems.map((service, index) => (
-            <ScrollReveal
-              key={service.id}
-              delay={index * SCROLL_STAGGER_MS}
-              className="h-full"
-            >
-              <ServiceCard
-                icon={service.icon}
-                title={t(`services.items.${service.id}.title`)}
-                description={t(`services.items.${service.id}.description`)}
-              />
-            </ScrollReveal>
-          ))}
-        </div>
+      <div
+        className={cn(
+          "mt-12 flex flex-nowrap items-stretch gap-4 overflow-x-auto px-4 pb-3",
+          "scroll-smooth snap-x snap-mandatory",
+          "[-ms-overflow-style:none] [scrollbar-width:thin]",
+          "[&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full",
+          "[&::-webkit-scrollbar-thumb]:bg-cream-dark [&::-webkit-scrollbar-track]:rounded-full",
+          "[&::-webkit-scrollbar-track]:bg-cream-dark/30",
+          "sm:mx-auto sm:max-w-7xl sm:grid sm:grid-cols-2 sm:items-stretch sm:gap-6 sm:overflow-visible sm:px-6 sm:pb-0 lg:grid-cols-3 lg:px-8 xl:grid-cols-4"
+        )}
+        tabIndex={0}
+        aria-label={t("services.title")}
+      >
+        {serviceItems.map((service, index) => (
+          <ScrollReveal
+            key={service.id}
+            delay={index * SCROLL_STAGGER_MS}
+            className="flex h-full w-[min(calc(100vw-3rem),21rem)] shrink-0 snap-start sm:w-full sm:shrink"
+          >
+            <ServiceCard
+              icon={service.icon}
+              title={t(`services.items.${service.id}.title`)}
+              description={t(`services.items.${service.id}.description`)}
+            />
+          </ScrollReveal>
+        ))}
       </div>
     </section>
   );

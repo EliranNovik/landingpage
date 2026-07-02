@@ -55,8 +55,8 @@ export function ContactForm({
   const isRtl = !isEnglish;
   const isMinimal = variant === "minimal";
   const labelClass = cn(
-    "block w-full text-xs font-medium tracking-wide text-muted uppercase",
-    isRtl ? "text-right" : "text-left"
+    "block w-full font-medium tracking-wide text-muted uppercase",
+    isRtl ? "text-right text-sm" : "text-left text-xs"
   );
   const fieldAlignClass = isRtl
     ? "w-full text-right placeholder:text-right"

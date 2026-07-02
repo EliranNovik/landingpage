@@ -36,7 +36,7 @@ export function VideosSection() {
           <p className="text-lg font-medium tracking-wide text-accent uppercase sm:text-xl">
             {t("videos.eyebrow")}
           </p>
-          <h2 className="mt-2 font-serif text-5xl text-charcoal sm:text-6xl">
+          <h2 className="mt-2 font-serif text-4xl text-charcoal sm:text-5xl lg:text-6xl">
             {t("videos.title")}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted">

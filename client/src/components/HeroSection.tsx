@@ -44,28 +44,46 @@ export function HeroSection() {
             decoding="async"
           />
 
-        <div className="relative z-10 w-full p-6 pb-8 pt-5 sm:p-10 sm:pb-10 sm:pt-6 lg:px-12 lg:pb-12 lg:pt-8 xl:px-14 xl:pt-10">
-          <div className="flex max-w-xl flex-col">
+        <div
+          className={cn(
+            "static z-10 w-full p-6 pb-8 pt-5 sm:p-10 sm:pb-10 sm:pt-6 lg:px-12 lg:pb-12 lg:pt-8 xl:px-14 xl:pt-10"
+          )}
+        >
+          <p
+            className={cn(
+              "absolute z-20 text-left text-sm font-semibold tracking-[0.22em] text-[#e8d4bc] uppercase",
+              "left-4 top-4 sm:left-6 sm:top-5 sm:text-base sm:tracking-[0.2em]",
+              "lg:left-12 lg:top-8 lg:text-lg lg:tracking-[0.15em]",
+              "xl:left-14 xl:top-10"
+            )}
+          >
+            <Ltr>{BRAND_SHORT}</Ltr>
+          </p>
+          <div className="flex max-w-xl flex-col pt-10 sm:pt-12 lg:pt-14 xl:pt-16">
             <ScrollReveal>
-              <p className="text-sm font-semibold tracking-[0.15em] text-[#e8d4bc] uppercase sm:text-base lg:text-lg">
-                <Ltr>{BRAND_SHORT}</Ltr>
-              </p>
-              <h1 className="mt-3 font-serif text-[2.875rem] leading-[1.1] text-white sm:text-[3.5rem] lg:text-[3.875rem] xl:text-[4.5rem]">
+              <h1
+                className={cn(
+                  "font-serif text-white lg:text-[3.875rem] lg:leading-[1.1] xl:text-[4.5rem]",
+                  isRtl
+                    ? "text-[2.5rem] leading-[1.15] sm:text-[3rem] sm:leading-[1.12]"
+                    : "text-[2.875rem] leading-[1.15] sm:text-[3.5rem] sm:leading-[1.12]"
+                )}
+              >
                 {t("hero.title")}
               </h1>
             </ScrollReveal>
 
             <ScrollReveal delay={120}>
-            <p className="mt-7 max-w-lg text-base leading-relaxed text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] sm:mt-8 sm:text-lg">
+            <p className="mt-7 max-w-lg text-base leading-relaxed text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] max-lg:mt-9 sm:mt-8 sm:max-lg:mt-10 sm:text-lg">
               {t("hero.summary")}
             </p>
             </ScrollReveal>
 
-            <ScrollReveal delay={220}>
+            <ScrollReveal delay={220} className={cn(isRtl && "flex justify-center")}>
             <button
               type="button"
               onClick={scrollToServices}
-              className="mt-5 inline-flex items-center gap-2 text-base font-semibold text-[#e8d4bc] underline-offset-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] transition-colors hover:text-white hover:underline sm:mt-6"
+              className="mt-5 inline-flex items-center gap-2 text-base font-semibold text-[#e8d4bc] underline-offset-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] transition-colors hover:text-white hover:underline max-lg:mt-7 sm:mt-6"
             >
               {t("hero.viewServices")}
               <ChevronDown className="h-5 w-5" aria-hidden />
@@ -99,8 +117,10 @@ export function HeroSection() {
 
       <div
         className={cn(
-          "page-beige flex flex-col justify-center px-6 py-12 sm:px-10 sm:py-14 lg:px-10 lg:py-12 xl:px-12",
-          isRtl && "items-end"
+          "page-beige flex flex-col justify-center px-6 py-12 sm:px-10 sm:py-14 lg:py-12",
+          isRtl
+            ? "items-start lg:ps-10 lg:pe-5 xl:ps-12 xl:pe-6"
+            : "lg:px-10 xl:px-12"
         )}
         style={{ backgroundColor: PAGE_BEIGE }}
       >
@@ -109,7 +129,7 @@ export function HeroSection() {
           delay={150}
           className={cn(
             "w-full max-w-md lg:max-w-lg",
-            isRtl ? "ms-auto me-0" : "mx-auto"
+            isRtl ? "me-auto ms-0" : "mx-auto"
           )}
         >
           <ContactForm variant="minimal" />

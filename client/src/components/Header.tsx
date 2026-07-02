@@ -58,7 +58,12 @@ export function Header({ overlay = false }: HeaderProps) {
           )}
         </a>
 
-        <div className="flex items-center gap-3 md:ml-auto md:gap-5">
+        <div
+          className={cn(
+            "flex items-center gap-3 md:gap-5",
+            !isHebrew && "md:ml-auto"
+          )}
+        >
           <nav
             aria-label="Main navigation"
             className="hidden items-center gap-8 md:flex lg:gap-10"
@@ -79,7 +84,7 @@ export function Header({ overlay = false }: HeaderProps) {
             ))}
           </nav>
 
-          <LanguageSwitcher overlay={overlay} />
+          {!isHebrew && <LanguageSwitcher overlay={overlay} />}
 
           <a
             href="#contact-form"
@@ -89,6 +94,8 @@ export function Header({ overlay = false }: HeaderProps) {
             {t("header.contactMobile")}
           </a>
         </div>
+
+        {isHebrew && <LanguageSwitcher overlay={overlay} />}
       </div>
     </header>
   );

@@ -72,7 +72,7 @@ export function ProcessSection({ onDarkBackground }: ProcessSectionProps) {
                   >
                     {!isLast && (
                       <span
-                        className="absolute left-5 top-10 bottom-0 w-0.5 -translate-x-1/2 bg-cream/40 lg:hidden"
+                        className="absolute start-5 top-10 bottom-0 w-0.5 -translate-x-1/2 bg-cream/40 lg:hidden"
                         aria-hidden
                       />
                     )}

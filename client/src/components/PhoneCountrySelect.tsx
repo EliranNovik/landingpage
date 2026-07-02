@@ -61,10 +61,10 @@ export function PhoneCountrySelect({
     "h-11 shrink-0 appearance-none rounded-xl border border-cream-dark/80 bg-white px-3 pe-8 text-base text-charcoal shadow-sm sm:text-sm",
     "bg-[length:1rem] bg-[position:right_0.5rem_center] bg-no-repeat",
     "bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%237a4434%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22m6 9 6 6 6-6%22/%3E%3C/svg%3E')]",
-    isMinimal ? "w-[7.5rem]" : "w-[9.5rem] sm:w-[10.5rem]",
     isRtl &&
       "bg-[position:left_0.5rem_center] pe-3 ps-8 text-right [direction:rtl]",
-    triggerClassName
+    triggerClassName,
+    isMinimal ? "w-[5.25rem]" : "w-[5.5rem]"
   );
 
   if (prefersNative) {
@@ -82,6 +82,7 @@ export function PhoneCountrySelect({
             key={option.iso}
             option={option}
             isRtl={!!isRtl}
+            codeOnly={option.iso === value}
           />
         ))}
       </select>
@@ -122,13 +123,15 @@ export function PhoneCountrySelect({
 function NativeOption({
   option,
   isRtl,
+  codeOnly,
 }: {
   option: CountryCallingCodeOption;
   isRtl: boolean;
+  codeOnly: boolean;
 }) {
   return (
     <option value={option.iso}>
-      {formatCountryOptionLabel(option, isRtl)}
+      {formatCountryOptionLabel(option, isRtl, codeOnly)}
     </option>
   );
 }
