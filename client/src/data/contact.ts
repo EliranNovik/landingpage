@@ -1,11 +1,17 @@
+const OFFICE_ADDRESS = "Menachem Begin 11, 25th floor, Ramat Gan, Israel";
+
 export const OFFICE_CONTACT = {
   email: "office@lawoffice.org.il",
+  address: OFFICE_ADDRESS,
+  mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(OFFICE_ADDRESS)}`,
   whatsappUrl: "https://wa.me/972552780162",
   whatsappLabel: "WhatsApp",
-  phoneDesktop: "+972737895444",
-  phoneDesktopLabel: "073-789-5444",
-  phoneMobile: "+972503489649",
-  phoneMobileLabel: "050-348-9649",
+  phone: "+97229903180",
+  phoneDisplay: "029903180",
+  phoneDesktop: "+97229903180",
+  phoneDesktopLabel: "029903180",
+  phoneMobile: "+97229903180",
+  phoneMobileLabel: "029903180",
 } as const;
 
 export const SOCIAL_LINKS = [
