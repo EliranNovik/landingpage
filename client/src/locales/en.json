@@ -36,13 +36,9 @@
         "title": "Document Acquisition",
         "description": "Assistance obtaining documents from authorities, archives, municipalities, courts, and institutions in Israel and abroad."
       },
-      "fbi": {
-        "title": "FBI Background Checks",
-        "description": "Support with FBI background check requests and related document preparation."
-      },
-      "police": {
-        "title": "Police Records / Certificate of Integrity",
-        "description": "Assistance obtaining police records, certificate of integrity, and other official certificates from relevant authorities."
+      "otherOfficial": {
+        "title": "Other Official Documents",
+        "description": "Assistance obtaining additional official documents and certificates from relevant authorities in Israel and abroad."
       },
       "apostilles": {
         "title": "Apostilles",

@@ -9,7 +9,6 @@ import {
   Medal,
   Scale,
   Search,
-  ShieldCheck,
   Stamp,
 } from "lucide-react";
 
@@ -17,8 +16,7 @@ export type ServiceItemId =
   | "notarial"
   | "translation"
   | "acquisition"
-  | "fbi"
-  | "police"
+  | "otherOfficial"
   | "apostilles"
   | "foreignLaw"
   | "archive"
@@ -32,8 +30,7 @@ export const serviceItems: { id: ServiceItemId; icon: LucideIcon }[] = [
   { id: "notarial", icon: FileText },
   { id: "translation", icon: Languages },
   { id: "acquisition", icon: Globe },
-  { id: "fbi", icon: ShieldCheck },
-  { id: "police", icon: BadgeCheck },
+  { id: "otherOfficial", icon: BadgeCheck },
   { id: "apostilles", icon: Landmark },
   { id: "foreignLaw", icon: Scale },
   { id: "archive", icon: Search },
