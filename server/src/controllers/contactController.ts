@@ -13,9 +13,62 @@ interface ContactBody {
   /** @deprecated Use `facts` */
   message?: string;
   source_code?: string;
+  /** @deprecated Send inside `utm_params` */
+  gclid?: string;
+  utm_params?: unknown;
 }
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/** Attribution keys the CRM understands; anything else is dropped. */
+const ALLOWED_UTM_KEYS = new Set([
+  "gclid",
+  "gbraid",
+  "wbraid",
+  "campaignid",
+  "adgroupid",
+  "keyword",
+  "matchtype",
+  "device",
+  "network",
+  "creative",
+  "placement",
+  "lpurl",
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+]);
+
+const MAX_UTM_VALUE_LENGTH = 512;
+
+/**
+ * Builds the CRM's `utm_params` object from untrusted request input.
+ *
+ * The CRM stores this straight into a JSONB column, so keys are whitelisted and
+ * values capped rather than passed through as-is.
+ */
+function resolveUtmParams(body: ContactBody): Record<string, string> {
+  const params: Record<string, string> = {};
+  const raw = body.utm_params;
+
+  if (raw && typeof raw === "object" && !Array.isArray(raw)) {
+    for (const [key, value] of Object.entries(raw)) {
+      if (!ALLOWED_UTM_KEYS.has(key)) continue;
+      if (typeof value !== "string") continue;
+
+      const trimmed = value.trim();
+      if (trimmed) params[key] = trimmed.slice(0, MAX_UTM_VALUE_LENGTH);
+    }
+  }
+
+  const topLevelGclid = body.gclid?.trim();
+  if (!params.gclid && topLevelGclid) {
+    params.gclid = topLevelGclid.slice(0, MAX_UTM_VALUE_LENGTH);
+  }
+
+  return params;
+}
 
 function resolvePhone(body: ContactBody): string {
   const raw = body.phone?.trim() || body.mobile?.trim() || "";
@@ -74,12 +127,14 @@ export async function submitContact(
   }
 
   const sourceCode = body.source_code?.trim();
+  const utmParams = resolveUtmParams(body);
   const lead = {
     name,
     email,
     phone,
     facts,
     ...(sourceCode ? { source_code: sourceCode } : {}),
+    ...(Object.keys(utmParams).length > 0 ? { utm_params: utmParams } : {}),
   };
 
   try {

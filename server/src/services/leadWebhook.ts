@@ -4,6 +4,12 @@ export interface LeadWebhookPayload {
   phone: string;
   facts: string;
   source_code?: string;
+  /**
+   * Stored by the CRM as `leads.utm_params` (JSONB). Tracking keys such as
+   * `gclid` are only persisted when nested here; the webhook ignores them at
+   * the top level.
+   */
+  utm_params?: Record<string, string>;
 }
 
 const DEFAULT_WEBHOOK_URL =

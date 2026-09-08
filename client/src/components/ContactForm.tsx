@@ -12,6 +12,7 @@ import { PhoneCountrySelect } from "@/components/PhoneCountrySelect";
 import { combinePhoneNumber } from "@/lib/phone";
 import { apiUrl } from "@/lib/api";
 import { getSourceCodeForSubmit } from "@/lib/sourceCode";
+import { getTrackingParamsForSubmit } from "@/lib/tracking";
 import { cn } from "@/lib/utils";
 
 interface FormState {
@@ -89,6 +90,7 @@ export function ContactForm({
 
     setLoading(true);
     try {
+      const utmParams = getTrackingParamsForSubmit();
       const response = await fetch(apiUrl("/api/contact"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -101,6 +103,9 @@ export function ContactForm({
           ),
           facts: form.message.trim(),
           source_code: getSourceCodeForSubmit(),
+          ...(Object.keys(utmParams).length > 0
+            ? { utm_params: utmParams }
+            : {}),
         }),
       });
 
@@ -220,6 +225,14 @@ export function ContactForm({
             type="hidden"
             name="source_code"
             value={getSourceCodeForSubmit()}
+            readOnly
+            tabIndex={-1}
+          />
+
+          <input
+            type="hidden"
+            name="gclid"
+            value={getTrackingParamsForSubmit().gclid ?? ""}
             readOnly
             tabIndex={-1}
           />

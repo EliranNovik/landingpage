@@ -20,7 +20,6 @@ const CAMPAIGN_URL_PARAMS = [
   "campaignid",
   "campaign_id",
   "utm_campaign",
-  "gclid",
 ] as const;
 
 function readCampaignIdFromSearchParams(
