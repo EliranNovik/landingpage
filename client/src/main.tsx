@@ -6,6 +6,11 @@ import { captureTrackingFromUrl } from "@/lib/tracking";
 import "./i18n";
 import "./index.css";
 
+if (window.location.pathname.replace(/\/+$/, "") === "/german-citizenship") {
+  document.documentElement.classList.add("german-page-active");
+  document.body.classList.add("german-page-active");
+}
+
 captureCampaignFromUrl();
 captureTrackingFromUrl();
 

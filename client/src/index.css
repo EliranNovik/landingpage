@@ -30,6 +30,24 @@ body {
   background-color: #f7f0e6 !important;
 }
 
+html.german-page-active,
+body.german-page-active,
+body.german-page-active #root,
+html:has(.german-page),
+body:has(.german-page),
+body:has(.german-page) #root {
+  background: #0d2238 !important;
+  background-color: #0d2238 !important;
+  background-image: none !important;
+}
+
+html.german-page-active,
+body.german-page-active,
+html:has(.german-page),
+body:has(.german-page) {
+  overscroll-behavior-y: none;
+}
+
 @layer components {
   .reviews-carousel {
     padding-inline: 1rem;

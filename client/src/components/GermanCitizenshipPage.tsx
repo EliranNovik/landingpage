@@ -68,11 +68,18 @@ export function GermanCitizenshipPage() {
     void i18n.changeLanguage("he").finally(() => setLanguageReady(true));
     document.documentElement.lang = "he";
     document.documentElement.dir = "rtl";
+    document.documentElement.classList.add("german-page-active");
+    document.body.classList.add("german-page-active");
     document.title = "אזרחות ודרכון גרמני | דקר, פקס ושות׳";
+
+    return () => {
+      document.documentElement.classList.remove("german-page-active");
+      document.body.classList.remove("german-page-active");
+    };
   }, []);
 
   if (!languageReady) {
-    return <div className="min-h-screen bg-[#f4f6f8]" aria-hidden />;
+    return <div className="min-h-screen bg-[#0d2238]" aria-hidden />;
   }
 
   const scrollToForm = () => {
@@ -106,7 +113,7 @@ export function GermanCitizenshipPage() {
   };
 
   return (
-    <div dir="rtl" className="german-page min-h-screen bg-[#f4f6f8] text-[#171717]">
+    <div dir="rtl" className="german-page min-h-screen bg-[#0d2238] text-[#171717]">
       <header className="sticky top-0 z-50 bg-[#0d2238]/95 text-white backdrop-blur-xl">
         <div className="mx-auto grid max-w-7xl grid-cols-[auto_auto] items-center justify-between gap-4 px-5 py-3 sm:px-8 lg:grid-cols-[auto_1fr_auto]">
           <a
