@@ -5,8 +5,8 @@ import contactRoutes from "./routes/contactRoutes.js";
 const DEFAULT_ALLOWED_ORIGINS = [
   "https://services.lawoffice.org.il",
   "https://landingpage-flax-xi.vercel.app",
-  "http://localhost:5174",
-  "http://127.0.0.1:5174",
+  "http://localhost:5176",
+  "http://127.0.0.1:5176",
 ];
 
 function getAllowedOrigins(): string[] {

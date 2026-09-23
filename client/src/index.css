@@ -108,6 +108,300 @@ body {
   .glass-trust-panel {
     @apply rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-sm leading-relaxed text-white/90 shadow-lg backdrop-blur-md;
   }
+
+  .german-hero-glow {
+    background:
+      radial-gradient(circle at 12% 18%, rgba(216, 189, 131, 0.14), transparent 30%),
+      radial-gradient(circle at 88% 78%, rgba(62, 134, 173, 0.2), transparent 34%),
+      linear-gradient(
+        90deg,
+        rgba(8, 25, 41, 0.48) 0%,
+        rgba(10, 31, 50, 0.76) 46%,
+        rgba(13, 34, 56, 0.96) 100%
+      );
+  }
+
+  .german-story-bg {
+    background:
+      linear-gradient(rgba(244, 246, 248, 0.94), rgba(244, 246, 248, 0.98)),
+      radial-gradient(circle at 15% 30%, rgba(45, 111, 149, 0.12), transparent 24%),
+      radial-gradient(circle at 85% 70%, rgba(216, 189, 131, 0.16), transparent 28%);
+  }
+
+  .german-page input,
+  .german-page textarea,
+  .german-page [role="combobox"] {
+    border-color: #d9dde2;
+  }
+
+  /* Keep the shared form, but give it this landing page's own identity. */
+  .german-page .bg-accent {
+    background-color: #2d6f95;
+  }
+
+  .german-page .hover\:bg-accent-hover:hover {
+    background-color: #245a79;
+  }
+
+  .german-page .text-accent {
+    color: #2d6f95;
+  }
+
+  .german-page .focus-visible\:border-accent:focus-visible {
+    border-color: #2d6f95;
+  }
+
+  .german-page .focus-visible\:ring-accent\/25:focus-visible {
+    --tw-ring-color: rgba(45, 111, 149, 0.25);
+  }
+
+  .german-lead-form > .contact-form-header {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid #e6eaf0;
+  }
+
+  .german-lead-form h2 {
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 1.75rem;
+    line-height: 1.25;
+    font-weight: 750;
+    letter-spacing: -0.025em;
+    color: #142638;
+  }
+
+  .german-lead-form > .contact-form-header p {
+    margin-top: 0.5rem;
+    color: #687888;
+    font-size: 1rem;
+  }
+
+  .german-lead-form form > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: 1.25rem;
+    margin-bottom: 0;
+  }
+
+  .german-lead-form label {
+    position: absolute;
+    inset-inline-start: 0.875rem;
+    top: 0.9rem;
+    z-index: 10;
+    width: auto;
+    padding-inline: 0.3rem;
+    background-color: transparent;
+    color: #34495d;
+    font-size: 0.86rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.2;
+    pointer-events: none;
+    transform-origin: right center;
+    transition:
+      top 160ms ease,
+      color 160ms ease,
+      font-size 160ms ease,
+      background-color 160ms ease;
+  }
+
+  .german-lead-form form > .space-y-2 {
+    position: relative;
+  }
+
+  .german-lead-form form > .space-y-2 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0;
+  }
+
+  .german-lead-form form > .space-y-2:has(input:focus) label,
+  .german-lead-form form > .space-y-2:has(textarea:focus) label,
+  .german-lead-form form > .space-y-2:has(input:not(:placeholder-shown)) label,
+  .german-lead-form form > .space-y-2:has(textarea:not(:placeholder-shown)) label,
+  .german-lead-form form > .space-y-2:has(input:-webkit-autofill) label {
+    top: -0.55rem;
+    background-color: #fff;
+    color: #2d6f95;
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  /* The phone field contains both a country selector and input, so its label
+     stays floated instead of competing with the selector. */
+  .german-lead-form form > .space-y-2:nth-of-type(3) label {
+    top: -0.55rem;
+    background-color: #fff;
+    color: #526576;
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .german-lead-form input::placeholder,
+  .german-lead-form textarea::placeholder {
+    color: transparent;
+    transition: color 160ms ease;
+  }
+
+  .german-lead-form input:focus::placeholder,
+  .german-lead-form textarea:focus::placeholder {
+    color: #9aa6b2;
+  }
+
+  .german-lead-form input,
+  .german-lead-form textarea,
+  .german-lead-form [role="combobox"] {
+    border-color: #dce2e8;
+    background-color: #f8fafc;
+    box-shadow: 0 1px 2px rgba(13, 34, 56, 0.03);
+    transition:
+      border-color 160ms ease,
+      background-color 160ms ease,
+      box-shadow 160ms ease;
+  }
+
+  .german-lead-form input {
+    height: 3rem;
+  }
+
+  .german-lead-form [role="combobox"] {
+    height: 3rem;
+  }
+
+  .german-lead-form textarea {
+    min-height: 6.5rem;
+    overflow-y: hidden;
+  }
+
+  .german-lead-form input:hover,
+  .german-lead-form textarea:hover,
+  .german-lead-form [role="combobox"]:hover {
+    border-color: #bdc9d3;
+    background-color: #fff;
+  }
+
+  .german-lead-form input:focus-visible,
+  .german-lead-form textarea:focus-visible,
+  .german-lead-form [role="combobox"]:focus-visible {
+    border-color: #2d6f95;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(45, 111, 149, 0.12);
+  }
+
+  .german-lead-form button[type="submit"] {
+    min-height: 3rem;
+    width: 100%;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #337ca4, #245f82);
+    box-shadow: 0 8px 20px rgba(36, 95, 130, 0.2);
+    font-weight: 700;
+    transition:
+      transform 160ms ease,
+      box-shadow 160ms ease,
+      background 160ms ease;
+  }
+
+  .german-lead-form button[type="submit"]:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #2d7197, #1f5575);
+    box-shadow: 0 10px 24px rgba(36, 95, 130, 0.28);
+  }
+
+  .german-inline-form input,
+  .german-inline-form textarea,
+  .german-inline-form [role="combobox"] {
+    background-color: #fff;
+  }
+
+  .german-inline-form textarea {
+    height: 3rem;
+    min-height: 3rem;
+    overflow-y: hidden;
+    resize: none;
+  }
+
+  .german-lead-form.german-inline-form form > .space-y-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .german-lead-form.german-inline-form form > .space-y-2 label {
+    position: static;
+    width: auto;
+    padding: 0;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.78rem;
+    font-weight: 650;
+    line-height: 1.2;
+  }
+
+  .german-lead-form.german-inline-form
+    form
+    > .space-y-2:has(input:focus)
+    label,
+  .german-lead-form.german-inline-form
+    form
+    > .space-y-2:has(textarea:focus)
+    label,
+  .german-lead-form.german-inline-form
+    form
+    > .space-y-2:has(input:not(:placeholder-shown))
+    label,
+  .german-lead-form.german-inline-form
+    form
+    > .space-y-2:has(textarea:not(:placeholder-shown))
+    label {
+    position: static;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.78rem;
+  }
+
+  .german-inline-form input::placeholder,
+  .german-inline-form textarea::placeholder {
+    color: #9aa6b2;
+  }
+
+  @media (min-width: 1024px) {
+    .german-inline-form form {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1.1fr)
+        minmax(0, 1.45fr)
+        minmax(0, 1.15fr)
+        minmax(8rem, 0.7fr);
+      align-items: stretch;
+      gap: 1rem;
+    }
+
+    .german-inline-form form > :not([hidden]) ~ :not([hidden]) {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .german-inline-form textarea {
+      min-height: 3rem;
+      height: 3rem;
+      overflow-y: hidden;
+      resize: none;
+    }
+
+    .german-inline-form form > div:last-child {
+      display: flex;
+      align-items: flex-end;
+      align-self: stretch;
+    }
+
+    .german-inline-form button[type="submit"] {
+      height: 3rem;
+      min-width: 8rem;
+      border-radius: 9999px;
+    }
+
+    .german-inline-form form > p[role="alert"] {
+      grid-column: 1 / -1;
+    }
+  }
 }
 
 @layer base {

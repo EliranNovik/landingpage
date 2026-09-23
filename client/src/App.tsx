@@ -9,14 +9,20 @@ import { ReviewsSection } from "@/components/ReviewsSection";
 import { TeamSection } from "@/components/TeamSection";
 import { VideosSection } from "@/components/VideosSection";
 import { ServicesSection } from "@/components/ServicesSection";
+import { GermanCitizenshipPage } from "@/components/GermanCitizenshipPage";
 // import { WhyChooseUsSection } from "@/components/WhyChooseUsSection";
 
 function App() {
+  const pathname = window.location.pathname.replace(/\/+$/, "") || "/";
   const [heroLogoInView, setHeroLogoInView] = useState(
     () =>
       typeof window !== "undefined" &&
       window.matchMedia("(min-width: 1024px)").matches
   );
+
+  if (pathname === "/german-citizenship") {
+    return <GermanCitizenshipPage />;
+  }
 
   return (
     <div className="min-h-screen">

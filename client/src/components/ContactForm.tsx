@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
@@ -45,11 +45,17 @@ const minimalMessageClass =
 interface ContactFormProps {
   className?: string;
   variant?: "default" | "minimal";
+  sourceCode?: string;
+  id?: string;
+  hideHeader?: boolean;
 }
 
 export function ContactForm({
   className,
   variant = "default",
+  sourceCode,
+  id = "contact-form",
+  hideHeader = false,
 }: ContactFormProps) {
   const { t, i18n } = useTranslation();
   const isEnglish = !i18n.language.startsWith("he");
@@ -77,6 +83,13 @@ export function ContactForm({
     return null;
   };
 
+  const handleMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const textarea = e.currentTarget;
+    textarea.style.height = "auto";
+    textarea.style.height = `${textarea.scrollHeight}px`;
+    setForm((prev) => ({ ...prev, message: textarea.value }));
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -102,7 +115,7 @@ export function ContactForm({
             form.phone
           ),
           facts: form.message.trim(),
-          source_code: getSourceCodeForSubmit(),
+          source_code: sourceCode ?? getSourceCodeForSubmit(),
           ...(Object.keys(utmParams).length > 0
             ? { utm_params: utmParams }
             : {}),
@@ -130,7 +143,13 @@ export function ContactForm({
   const fieldClass = isMinimal ? minimalInputClass : undefined;
 
   const header = (
-    <div className={cn(isMinimal ? "mb-10" : "", isRtl && "text-right")}>
+    <div
+      className={cn(
+        "contact-form-header",
+        isMinimal ? "mb-10" : "",
+        isRtl && "text-right"
+      )}
+    >
       <h2
         className={cn(
           "font-serif text-charcoal",
@@ -224,7 +243,7 @@ export function ContactForm({
           <input
             type="hidden"
             name="source_code"
-            value={getSourceCodeForSubmit()}
+            value={sourceCode ?? getSourceCodeForSubmit()}
             readOnly
             tabIndex={-1}
           />
@@ -318,9 +337,7 @@ export function ContactForm({
                 fieldAlignClass
               )}
               value={form.message}
-              onChange={(e) =>
-                setForm((prev) => ({ ...prev, message: e.target.value }))
-              }
+              onChange={handleMessageChange}
               disabled={loading}
             />
           </div>
@@ -357,11 +374,11 @@ export function ContactForm({
   if (isMinimal) {
     return (
       <div
-        id="contact-form"
+        id={id}
         dir={isRtl ? "rtl" : "ltr"}
         className={cn("w-full", className, isRtl && "text-right")}
       >
-        {header}
+        {!hideHeader && header}
         {formBody}
       </div>
     );
@@ -369,10 +386,10 @@ export function ContactForm({
 
   return (
     <Card
-      id="contact-form"
+      id={id}
       className={cn("border-cream-dark/90 bg-white shadow-md", className)}
     >
-      <CardHeader className="pb-4">{header}</CardHeader>
+      {!hideHeader && <CardHeader className="pb-4">{header}</CardHeader>}
       <CardContent>{formBody}</CardContent>
     </Card>
   );
