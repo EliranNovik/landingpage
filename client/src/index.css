@@ -194,6 +194,16 @@ body:has(.german-page) {
     font-size: 1rem;
   }
 
+  .german-hero-form > .contact-form-header p {
+    color: #245a79;
+    text-shadow: none;
+  }
+
+  .german-hero-form > .contact-form-header h2 {
+    color: #142638;
+    text-shadow: none;
+  }
+
   .german-lead-form form > :not([hidden]) ~ :not([hidden]) {
     --tw-space-y-reverse: 0;
     margin-top: 1.25rem;
@@ -320,6 +330,48 @@ body:has(.german-page) {
     transform: translateY(-1px);
     background: linear-gradient(135deg, #2d7197, #1f5575);
     box-shadow: 0 10px 24px rgba(36, 95, 130, 0.28);
+  }
+
+  .german-hero-form input,
+  .german-hero-form textarea,
+  .german-hero-form [role="combobox"] {
+    border-color: rgba(183, 198, 210, 0.8);
+    background-color: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(8px);
+  }
+
+  .german-hero-form input:hover,
+  .german-hero-form textarea:hover,
+  .german-hero-form [role="combobox"]:hover,
+  .german-hero-form input:focus-visible,
+  .german-hero-form textarea:focus-visible,
+  .german-hero-form [role="combobox"]:focus-visible {
+    background-color: rgba(255, 255, 255, 0.86);
+  }
+
+  .german-lead-form.german-hero-form
+    form
+    > .space-y-2:has(input:focus)
+    label,
+  .german-lead-form.german-hero-form
+    form
+    > .space-y-2:has(textarea:focus)
+    label,
+  .german-lead-form.german-hero-form
+    form
+    > .space-y-2:has(input:not(:placeholder-shown))
+    label,
+  .german-lead-form.german-hero-form
+    form
+    > .space-y-2:has(textarea:not(:placeholder-shown))
+    label,
+  .german-lead-form.german-hero-form
+    form
+    > .space-y-2:nth-of-type(3)
+    label {
+    border-radius: 9999px;
+    background-color: rgba(235, 242, 247, 0.94);
+    padding-inline: 0.5rem;
   }
 
   .german-inline-form input,

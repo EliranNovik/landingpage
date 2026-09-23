@@ -248,14 +248,14 @@ export function GermanCitizenshipPage() {
                   </button>
                 )}
                 <div className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-[#d8bd83]/10 via-[#3e86ad]/10 to-[#3e86ad]/20 blur-2xl" />
-                <div className="relative overflow-hidden rounded-[1.75rem] border border-white/70 bg-white text-charcoal shadow-[0_28px_80px_rgba(3,18,32,0.3)]">
+                <div className="relative overflow-hidden rounded-[1.75rem] bg-white/[0.6] text-charcoal shadow-[0_28px_80px_rgba(3,18,32,0.3)] backdrop-blur-xl">
                   <div className="h-1.5 bg-gradient-to-l from-[#2d6f95] via-[#5594b6] to-[#d8bd83]" />
                   <div className="pointer-events-none absolute -left-16 -top-16 h-44 w-44 rounded-full bg-[#2d6f95]/[0.06] blur-2xl" />
                   <div className="relative p-6 sm:p-8 lg:p-9">
                   <ContactForm
                     variant="minimal"
                     sourceCode={GERMAN_CITIZENSHIP_SOURCE_CODE}
-                    className="german-lead-form scroll-mt-36"
+                    className="german-lead-form german-hero-form scroll-mt-36"
                   />
                   </div>
                 </div>
