@@ -32,6 +32,16 @@ const getInitialForm = (language: string): FormState => ({
 });
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const hebrewPattern = /[\u0590-\u05ff]/;
+
+function directionForText(
+  value: string,
+  fallback: "rtl" | "ltr"
+): "rtl" | "ltr" {
+  const trimmed = value.trim();
+  if (!trimmed) return fallback;
+  return hebrewPattern.test(trimmed) ? "rtl" : "ltr";
+}
 
 const minimalInputClass =
   "h-11 rounded-xl border border-cream-dark/80 bg-white px-4 shadow-sm focus-visible:border-accent focus-visible:ring-2 focus-visible:ring-accent/25";
@@ -48,6 +58,7 @@ interface ContactFormProps {
   sourceCode?: string;
   id?: string;
   hideHeader?: boolean;
+  stableCountrySelect?: boolean;
 }
 
 export function ContactForm({
@@ -56,6 +67,7 @@ export function ContactForm({
   sourceCode,
   id = "contact-form",
   hideHeader = false,
+  stableCountrySelect = false,
 }: ContactFormProps) {
   const { t, i18n } = useTranslation();
   const isEnglish = !i18n.language.startsWith("he");
@@ -66,7 +78,7 @@ export function ContactForm({
     isRtl ? "text-right text-sm" : "text-left text-xs"
   );
   const fieldAlignClass = isRtl
-    ? "w-full text-right placeholder:text-right"
+    ? "w-full text-start placeholder:text-right"
     : "w-full";
   const [form, setForm] = useState<FormState>(() => getInitialForm(i18n.language));
   const [loading, setLoading] = useState(false);
@@ -264,6 +276,7 @@ export function ContactForm({
               id="name"
               name="name"
               autoComplete="name"
+              dir={directionForText(form.name, isRtl ? "rtl" : "ltr")}
               placeholder={t("contact.placeholders.name")}
               className={cn(fieldClass, fieldAlignClass)}
               value={form.name}
@@ -282,6 +295,10 @@ export function ContactForm({
               id="email"
               name="email"
               type="email"
+              dir={directionForText(form.email, isRtl ? "rtl" : "ltr")}
+              inputMode="email"
+              autoCapitalize="none"
+              spellCheck={false}
               autoComplete="email"
               placeholder={t("contact.placeholders.email")}
               className={cn(fieldClass, fieldAlignClass)}
@@ -297,7 +314,7 @@ export function ContactForm({
             <Label htmlFor="phone" className={labelClass}>
               {t("contact.phone")}
             </Label>
-            <div className="flex gap-4">
+            <div className="phone-field-row flex gap-4">
               <PhoneCountrySelect
                 value={form.countryIso}
                 onChange={(countryIso) =>
@@ -306,18 +323,29 @@ export function ContactForm({
                 disabled={loading}
                 isRtl={isRtl}
                 isMinimal={isMinimal}
+                stablePicker={stableCountrySelect}
                 triggerClassName={isMinimal ? minimalSelectClass : undefined}
               />
               <Input
                 id="phone"
                 name="phone"
                 type="tel"
+                dir={directionForText(form.phone, isRtl ? "rtl" : "ltr")}
+                inputMode="numeric"
+                pattern="[0-9]*"
                 autoComplete="tel-national"
                 placeholder={t("contact.placeholders.phone")}
-                className={cn("flex-1", fieldClass, fieldAlignClass)}
+                className={cn(
+                  "flex-1",
+                  fieldClass,
+                  fieldAlignClass
+                )}
                 value={form.phone}
                 onChange={(e) =>
-                  setForm((prev) => ({ ...prev, phone: e.target.value }))
+                  setForm((prev) => ({
+                    ...prev,
+                    phone: e.target.value.replace(/\D/g, ""),
+                  }))
                 }
                 disabled={loading}
               />
@@ -331,6 +359,7 @@ export function ContactForm({
             <Textarea
               id="message"
               name="message"
+              dir={directionForText(form.message, isRtl ? "rtl" : "ltr")}
               placeholder={t("contact.placeholders.message")}
               className={cn(
                 isMinimal ? minimalMessageClass : fieldClass,

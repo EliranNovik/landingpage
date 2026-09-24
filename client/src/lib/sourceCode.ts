@@ -1,6 +1,9 @@
 /** Default CRM source when no campaign mapping applies. */
 export const DEFAULT_SOURCE_CODE = "43225";
 
+/** CRM source dedicated to the German citizenship landing page. */
+export const GERMAN_CITIZENSHIP_SOURCE_CODE = "43225";
+
 const STORAGE_KEY = "dp_google_campaign_id";
 
 /**

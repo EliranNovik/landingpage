@@ -9,6 +9,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
   background: #f7f0e6 !important;
   background-color: #f7f0e6 !important;
 }
@@ -17,6 +18,17 @@ body {
   margin: 0;
   background: #f7f0e6 !important;
   background-color: #f7f0e6 !important;
+}
+
+/* Radix Select locks body scrolling while open. The browser already reserves
+   the scrollbar gutter, so its added compensation would shift the full page. */
+html body[data-scroll-locked],
+html body.with-scroll-bars-hidden {
+  --removed-body-scroll-bar-size: 0px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 #root {
@@ -296,6 +308,10 @@ body:has(.german-page) {
   .german-lead-form textarea {
     min-height: 6.5rem;
     overflow-y: hidden;
+  }
+
+  .german-lead-form .phone-field-row {
+    flex-direction: row-reverse;
   }
 
   .german-lead-form input:hover,

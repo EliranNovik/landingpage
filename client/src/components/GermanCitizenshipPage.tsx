@@ -5,16 +5,16 @@ import {
   Check,
   FileSearch,
   Landmark,
+  Quote,
   Scale,
 } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
+import { GermanContactFab } from "@/components/GermanContactFab";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { siteLogo, siteLogoAlt } from "@/data/assets";
 import i18n from "@/i18n";
-
-// Replace when the CRM source for this landing page is available.
-const GERMAN_CITIZENSHIP_SOURCE_CODE = "43225";
+import { GERMAN_CITIZENSHIP_SOURCE_CODE } from "@/lib/sourceCode";
 
 const eligibilityPoints = [
   "100% אחוזי הצלחה למתאימים",
@@ -55,6 +55,21 @@ const eligibilityQuestions = [
   {
     title: "איך מתקדמים מכאן?",
     text: "המחלקה הייעודית שלנו מלווה משפחות ישראליות בדרך לאזרחות אירופית — במקצועיות, בשקיפות ובליווי אישי בכל שלב.",
+  },
+];
+
+const germanCitizenshipReviews = [
+  {
+    name: "ניר פלסר",
+    text: "זכיתי ליחס אישי בטיפול המשפטי. מורן, אשר ליוותה אותי, גילתה בקיאות וחריצות. לאור שביעות רצוני, המלצתי גם למכרים נוספים לפנות למשרד.",
+  },
+  {
+    name: "פזית עוז",
+    text: "עורכי דין מקצועיים ואנושיים. נותנים מענה גם במצבי חירום. ממליצה בחום.",
+  },
+  {
+    name: "ליבי פורטנוב",
+    text: "רציתי להגיד תודה לנחמה האלופה מהמשרד שלכם, שליוותה ולחמה את מלחמותינו. בפה מלא ניתן להגיד שניצחנו. תודה רבה.",
   },
 ];
 
@@ -119,12 +134,12 @@ export function GermanCitizenshipPage() {
           <a
             href="#top"
             aria-label="דקר, פקס ושות׳ — דף הבית"
-            className="rounded-xl bg-white px-3 py-1.5 shadow-sm"
+            className="rounded-xl bg-white px-2 py-0.5 shadow-sm"
           >
             <img
               src={siteLogo}
               alt={siteLogoAlt}
-              className="h-12 w-auto max-w-[12rem] object-contain sm:h-14"
+              className="h-14 w-auto max-w-[13.5rem] object-contain sm:h-16"
             />
           </a>
           <nav
@@ -169,7 +184,10 @@ export function GermanCitizenshipPage() {
       </header>
 
       <main>
-        <section id="top" className="relative scroll-mt-24 overflow-hidden bg-[#0d2238] text-white">
+        <section
+          id="top"
+          className="relative scroll-mt-24 overflow-hidden bg-[#0d2238] text-white lg:min-h-[calc(100svh-5rem)]"
+        >
           <img
             src="/german-citizenship-hero.webp"
             alt=""
@@ -189,7 +207,10 @@ export function GermanCitizenshipPage() {
                 <p className="mb-4 text-base font-bold tracking-[0.12em] text-[#d8bd83] sm:text-lg">
                   דקר, פקס ושות׳ — המחלקה לאזרחות גרמנית
                 </p>
-                <h1 className="font-sans text-4xl font-extrabold leading-tight sm:text-5xl lg:text-[3.6rem]">
+                <span className="inline-flex rounded-full border border-[#d8bd83]/35 bg-[#d8bd83]/10 px-4 py-1.5 text-sm font-bold text-[#e2c994]">
+                  בדיקת זכאות ללא התחייבות
+                </span>
+                <h1 className="mt-4 font-sans text-[2.6rem] font-extrabold leading-tight sm:text-[3.25rem] lg:text-[4rem]">
                   דרכון גרמני
                   <span className="block text-[#d8bd83]">ואזרחות בביטחון</span>
                 </h1>
@@ -219,7 +240,7 @@ export function GermanCitizenshipPage() {
                 ))}
               </div>
 
-              <ScrollReveal delay={420}>
+              {/* <ScrollReveal delay={420}>
                 <div className="mt-8 rounded-2xl border border-[#d8bd83]/35 bg-white/[0.06] p-5">
                   <p className="text-lg font-bold text-[#e2c994]">
                     גם אם אין לכם מסמכים — אל דאגה!
@@ -228,7 +249,7 @@ export function GermanCitizenshipPage() {
                     בדיקה ראשונית אפשרית עם שם מלא, שם קרוב משפחה ותאריך לידה.
                   </p>
                 </div>
-              </ScrollReveal>
+              </ScrollReveal> */}
             </div>
 
             <ScrollReveal variant="fade-left" delay={180}>
@@ -248,13 +269,14 @@ export function GermanCitizenshipPage() {
                   </button>
                 )}
                 <div className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-[#d8bd83]/10 via-[#3e86ad]/10 to-[#3e86ad]/20 blur-2xl" />
-                <div className="relative overflow-hidden rounded-[1.75rem] bg-white/[0.6] text-charcoal shadow-[0_28px_80px_rgba(3,18,32,0.3)] backdrop-blur-xl">
-                  <div className="h-1.5 bg-gradient-to-l from-[#2d6f95] via-[#5594b6] to-[#d8bd83]" />
+                <div className="relative rounded-[1.75rem] bg-white/[0.6] text-charcoal shadow-[0_28px_80px_rgba(3,18,32,0.3)] backdrop-blur-xl">
+                  <div className="mx-4 h-1.5 rounded-full bg-gradient-to-l from-[#2d6f95] via-[#5594b6] to-[#d8bd83]" />
                   <div className="pointer-events-none absolute -left-16 -top-16 h-44 w-44 rounded-full bg-[#2d6f95]/[0.06] blur-2xl" />
                   <div className="relative p-6 sm:p-8 lg:p-9">
                   <ContactForm
                     variant="minimal"
                     sourceCode={GERMAN_CITIZENSHIP_SOURCE_CODE}
+                    stableCountrySelect
                     className="german-lead-form german-hero-form scroll-mt-36"
                   />
                   </div>
@@ -392,7 +414,7 @@ export function GermanCitizenshipPage() {
         <section id="process" className="scroll-mt-24 bg-[#e8ebef] py-20">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <ScrollReveal className="text-center">
-              <p className="text-sm font-bold tracking-wider text-[#2d6f95]">תהליך ברור ומסודר</p>
+              <p className="text-base font-bold tracking-wide text-[#2d6f95] sm:text-lg">תהליך ברור ומסודר</p>
               <h2 className="mt-3 font-sans text-3xl font-extrabold sm:text-4xl">
                 כך נבדוק ונקדם את הזכאות שלכם
               </h2>
@@ -403,7 +425,7 @@ export function GermanCitizenshipPage() {
                   <article className="h-full rounded-3xl border border-[#d9dde2] bg-white p-7 shadow-lg shadow-black/5">
                     <div className="flex items-center gap-4">
                       <Icon
-                        className="h-9 w-9 shrink-0 text-[#2d6f95]"
+                        className="h-10 w-10 shrink-0 text-[#2d6f95]"
                         strokeWidth={1.8}
                         aria-hidden
                       />
@@ -417,7 +439,55 @@ export function GermanCitizenshipPage() {
           </div>
         </section>
 
-        <section className="bg-[#163b59] px-5 py-16 text-white sm:px-8">
+        <section className="bg-[#f5f7f9] py-20 sm:py-24">
+          <div className="mx-auto max-w-7xl px-5 sm:px-8">
+            <ScrollReveal className="text-center">
+              <p className="text-base font-bold tracking-wide text-[#2d6f95] sm:text-lg">
+                לקוחות מספרים
+              </p>
+              <h2 className="mt-3 font-sans text-3xl font-extrabold text-[#172b3d] sm:text-4xl">
+                ליווי משפטי שמרגישים בו את ההבדל
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#657482]">
+                מקצועיות, זמינות ויחס אישי — לאורך כל הדרך.
+              </p>
+            </ScrollReveal>
+
+            <div className="-mx-5 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:-mx-8 sm:px-8 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:pb-0">
+              {germanCitizenshipReviews.map((review, index) => (
+                <ScrollReveal
+                  key={review.name}
+                  delay={index * 90}
+                  className="w-[84vw] max-w-[22rem] shrink-0 snap-center md:w-auto md:max-w-none"
+                >
+                  <blockquote className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-[#dce3e8] bg-white p-7 shadow-[0_12px_35px_rgba(13,34,56,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(13,34,56,0.11)] sm:p-8">
+                    <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-l from-[#2d6f95] via-[#5594b6] to-[#d8bd83] opacity-80" />
+                    <Quote
+                      className="h-9 w-9 text-[#d8bd83]"
+                      strokeWidth={1.5}
+                      aria-hidden
+                    />
+                    <p className="mt-6 flex-1 text-lg leading-8 text-[#34495d]">
+                      {review.text}
+                    </p>
+                    <footer className="mt-7 border-t border-[#e7ebef] pt-5">
+                      <cite className="not-italic">
+                        <span className="block font-sans text-base font-extrabold text-[#172b3d]">
+                          {review.name}
+                        </span>
+                        <span className="mt-1 block text-sm text-[#71808d]">
+                          לקוח/ת המשרד
+                        </span>
+                      </cite>
+                    </footer>
+                  </blockquote>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="relative z-20 overflow-visible bg-[#163b59] px-5 py-16 text-white sm:px-8">
           <div className="mx-auto max-w-7xl">
             <ScrollReveal className="text-center">
               <h2 className="font-sans text-3xl font-extrabold">
@@ -434,6 +504,7 @@ export function GermanCitizenshipPage() {
                   id="bottom-contact-form"
                   variant="minimal"
                   sourceCode={GERMAN_CITIZENSHIP_SOURCE_CODE}
+                  stableCountrySelect
                   hideHeader
                   className="german-lead-form german-inline-form"
                 />
@@ -444,6 +515,7 @@ export function GermanCitizenshipPage() {
       </main>
 
       <Footer variant="german" />
+      <GermanContactFab />
     </div>
   );
 }
