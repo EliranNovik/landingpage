@@ -20,8 +20,12 @@ function App() {
       window.matchMedia("(min-width: 1024px)").matches
   );
 
+  if (pathname === "/german-citizenship/en") {
+    return <GermanCitizenshipPage language="en" />;
+  }
+
   if (pathname === "/german-citizenship") {
-    return <GermanCitizenshipPage />;
+    return <GermanCitizenshipPage language="he" />;
   }
 
   return (

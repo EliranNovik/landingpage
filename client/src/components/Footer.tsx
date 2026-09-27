@@ -18,8 +18,9 @@ interface FooterProps {
 }
 
 export function Footer({ variant = "default" }: FooterProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const isGerman = variant === "german";
+  const isEnglish = !i18n.language.startsWith("he");
   const year = new Date().getFullYear();
   const { address, email, mapsUrl, phone, phoneDisplay } = OFFICE_CONTACT;
 
@@ -53,7 +54,9 @@ export function Footer({ variant = "default" }: FooterProps) {
               )}
             >
               {isGerman
-                ? "ליווי משפטי מקצועי לקבלת אזרחות ודרכון גרמני — מבדיקת הזכאות ועד לקבלת הדרכון."
+                ? isEnglish
+                  ? "Professional legal guidance for German citizenship and passports — from eligibility review through receipt of the passport."
+                  : "ליווי משפטי מקצועי לקבלת אזרחות ודרכון גרמני — מבדיקת הזכאות ועד לקבלת הדרכון."
                 : t("footer.tagline")}
             </p>
 

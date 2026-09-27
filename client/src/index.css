@@ -158,6 +158,77 @@ body:has(.german-page) {
       radial-gradient(circle at 85% 70%, rgba(216, 189, 131, 0.16), transparent 28%);
   }
 
+  .german-transition-rounded {
+    border-top-left-radius: clamp(3rem, 8vw, 8rem);
+  }
+
+  .german-transition-diagonal {
+    position: relative;
+    z-index: 1;
+    margin-top: -3rem;
+    clip-path: polygon(0 3rem, 38% 0, 100% 1.5rem, 100% 100%, 0 100%);
+  }
+
+  .german-transition-notch {
+    position: relative;
+    z-index: 2;
+    margin-top: -2.5rem;
+    clip-path: polygon(
+      0 1.5rem,
+      22% 1.5rem,
+      27% 0,
+      73% 0,
+      78% 1.5rem,
+      100% 1.5rem,
+      100% 100%,
+      0 100%
+    );
+  }
+
+  .german-transition-rounded-reverse {
+    position: relative;
+    z-index: 3;
+    margin-top: -3rem;
+    border-top-right-radius: clamp(3rem, 8vw, 8rem);
+  }
+
+  .german-transition-slant {
+    position: relative;
+    z-index: 4;
+    margin-top: -3rem;
+    clip-path: polygon(0 0, 68% 0, 100% 3rem, 100% 100%, 0 100%);
+  }
+
+  @media (max-width: 639px) {
+    .german-transition-diagonal {
+      margin-top: -1.5rem;
+      clip-path: polygon(0 1.5rem, 42% 0, 100% 0.75rem, 100% 100%, 0 100%);
+    }
+
+    .german-transition-notch {
+      margin-top: -1.25rem;
+      clip-path: polygon(
+        0 0.75rem,
+        22% 0.75rem,
+        28% 0,
+        72% 0,
+        78% 0.75rem,
+        100% 0.75rem,
+        100% 100%,
+        0 100%
+      );
+    }
+
+    .german-transition-rounded-reverse,
+    .german-transition-slant {
+      margin-top: -1.5rem;
+    }
+
+    .german-transition-slant {
+      clip-path: polygon(0 0, 72% 0, 100% 1.5rem, 100% 100%, 0 100%);
+    }
+  }
+
   .german-page input,
   .german-page textarea,
   .german-page [role="combobox"] {
@@ -207,13 +278,17 @@ body:has(.german-page) {
   }
 
   .german-hero-form > .contact-form-header p {
-    color: #245a79;
-    text-shadow: none;
+    color: rgba(255, 255, 255, 0.82);
+    text-shadow: 0 1px 12px rgba(3, 18, 32, 0.28);
   }
 
   .german-hero-form > .contact-form-header h2 {
-    color: #142638;
-    text-shadow: none;
+    color: #fff;
+    text-shadow: 0 1px 14px rgba(3, 18, 32, 0.32);
+  }
+
+  .german-hero-form > .contact-form-header {
+    border-bottom-color: rgba(255, 255, 255, 0.18);
   }
 
   .german-lead-form form > :not([hidden]) ~ :not([hidden]) {
@@ -285,6 +360,18 @@ body:has(.german-page) {
     color: #9aa6b2;
   }
 
+  .german-hero-form form > .space-y-2:nth-of-type(3) > label {
+    display: none;
+  }
+
+  .german-hero-form .phone-field-row input::placeholder {
+    color: #34495d;
+    font-size: 0.86rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 1;
+  }
+
   .german-lead-form input,
   .german-lead-form textarea,
   .german-lead-form [role="combobox"] {
@@ -310,7 +397,7 @@ body:has(.german-page) {
     overflow-y: hidden;
   }
 
-  .german-lead-form .phone-field-row {
+  .german-page[dir="rtl"] .german-lead-form .phone-field-row {
     flex-direction: row-reverse;
   }
 
@@ -354,6 +441,10 @@ body:has(.german-page) {
     border-color: rgba(183, 198, 210, 0.8);
     background-color: rgba(255, 255, 255, 0.62);
     backdrop-filter: blur(8px);
+  }
+
+  .german-hero-form textarea {
+    min-height: 7.5rem;
   }
 
   .german-hero-form input:hover,

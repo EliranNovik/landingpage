@@ -5,40 +5,46 @@ import { OFFICE_CONTACT } from "@/data/contact";
 import { GERMAN_CITIZENSHIP_SOURCE_CODE } from "@/lib/sourceCode";
 import { cn } from "@/lib/utils";
 
-const GERMAN_CITIZENSHIP_WHATSAPP_TEXT =
-  `שלום, אני מעוניין/ת לבדוק זכאות לאזרחות גרמנית (${GERMAN_CITIZENSHIP_SOURCE_CODE}) ואשמח לקבל פרטים נוספים.`;
+interface GermanContactFabProps {
+  language?: "he" | "en";
+}
 
-const actions = [
-  {
-    id: "phone",
-    label: "התקשרו אלינו",
-    detail: OFFICE_CONTACT.phoneMobileLabel,
-    href: `tel:${OFFICE_CONTACT.phoneMobile}`,
-    icon: Phone,
-    iconClass: "text-[#69b3dc]",
-  },
-  {
-    id: "whatsapp",
-    label: "שלחו WhatsApp",
-    detail: "מענה מהיר מהצוות",
-    href: `${OFFICE_CONTACT.whatsappUrl}?text=${encodeURIComponent(
-      GERMAN_CITIZENSHIP_WHATSAPP_TEXT
-    )}`,
-    icon: WhatsAppIcon,
-    iconClass: "text-[#38d979]",
-    external: true,
-  },
-  {
-    id: "email",
-    label: "שלחו דוא״ל",
-    detail: OFFICE_CONTACT.email,
-    href: `mailto:${OFFICE_CONTACT.email}`,
-    icon: Mail,
-    iconClass: "text-[#d8bd83]",
-  },
-] as const;
-
-export function GermanContactFab() {
+export function GermanContactFab({
+  language = "he",
+}: GermanContactFabProps) {
+  const isEnglish = language === "en";
+  const whatsappText = isEnglish
+    ? `Hello, I am interested in checking my eligibility for German citizenship (${GERMAN_CITIZENSHIP_SOURCE_CODE}) and would like more information.`
+    : `שלום, אני מעוניין/ת לבדוק זכאות לאזרחות גרמנית (${GERMAN_CITIZENSHIP_SOURCE_CODE}) ואשמח לקבל פרטים נוספים.`;
+  const actions = [
+    {
+      id: "phone",
+      label: isEnglish ? "Call us" : "התקשרו אלינו",
+      detail: OFFICE_CONTACT.phoneMobileLabel,
+      href: `tel:${OFFICE_CONTACT.phoneMobile}`,
+      icon: Phone,
+      iconClass: "text-[#69b3dc]",
+    },
+    {
+      id: "whatsapp",
+      label: isEnglish ? "Send a WhatsApp message" : "שלחו WhatsApp",
+      detail: isEnglish ? "Quick response from our team" : "מענה מהיר מהצוות",
+      href: `${OFFICE_CONTACT.whatsappUrl}?text=${encodeURIComponent(
+        whatsappText
+      )}`,
+      icon: WhatsAppIcon,
+      iconClass: "text-[#38d979]",
+      external: true,
+    },
+    {
+      id: "email",
+      label: isEnglish ? "Send an email" : "שלחו דוא״ל",
+      detail: OFFICE_CONTACT.email,
+      href: `mailto:${OFFICE_CONTACT.email}`,
+      icon: Mail,
+      iconClass: "text-[#d8bd83]",
+    },
+  ] as const;
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const hoverCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -102,7 +108,7 @@ export function GermanContactFab() {
         )}
       >
         <p className="px-3 pb-2 pt-1 text-xs font-bold tracking-wide text-[#d8bd83]">
-          איך נוח לכם לדבר איתנו?
+          {isEnglish ? "How would you like to contact us?" : "איך נוח לכם לדבר איתנו?"}
         </p>
         {actions.map((action) => {
           const Icon = action.icon;
@@ -126,7 +132,7 @@ export function GermanContactFab() {
               >
                 <Icon className="h-6 w-6" />
               </span>
-              <span className="min-w-0 text-right">
+              <span className="min-w-0 text-start">
                 <span className="block text-sm font-bold">{action.label}</span>
                 <span
                   className="mt-0.5 block truncate text-xs text-white/55"
@@ -149,7 +155,7 @@ export function GermanContactFab() {
         className="group inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-gradient-to-l from-[#337ca4] to-[#245f82] px-5 py-3.5 font-bold text-white shadow-[0_12px_30px_rgba(7,21,34,0.3)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(7,21,34,0.38)]"
       >
         <MessageCircle className="h-5 w-5" aria-hidden />
-        <span>צור קשר</span>
+        <span>{isEnglish ? "Contact us" : "צור קשר"}</span>
         <ChevronUp
           className={cn(
             "h-4 w-4 transition-transform duration-200",

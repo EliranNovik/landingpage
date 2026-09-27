@@ -126,10 +126,7 @@ export function PhoneCountrySelect({
 
   const nativeSelectClass = cn(
     "h-11 shrink-0 appearance-none rounded-xl border border-cream-dark/80 bg-white px-3 pe-8 text-base text-charcoal shadow-sm sm:text-sm",
-    "bg-[length:1rem] bg-[position:right_0.5rem_center] bg-no-repeat",
-    "bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%237a4434%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22m6 9 6 6 6-6%22/%3E%3C/svg%3E')]",
-    isRtl &&
-      "bg-[position:left_0.5rem_center] pe-3 ps-8 text-right [direction:rtl]",
+    isRtl && "pe-3 ps-8 text-right [direction:rtl]",
     triggerClassName,
     isMinimal ? "w-[5.25rem]" : "w-[5.5rem]"
   );
@@ -184,8 +181,8 @@ export function PhoneCountrySelect({
                     }
                   }}
                   inputMode="numeric"
-                  placeholder="הקלידו קידומת"
-                  aria-label="חיפוש לפי קידומת"
+                  placeholder={isRtl ? "הקלידו קידומת" : "Type calling code"}
+                  aria-label={isRtl ? "חיפוש לפי קידומת" : "Search by calling code"}
                   className="h-10 w-full rounded-lg border border-[#d9e0e6] bg-[#f8fafc] pe-9 ps-3 text-right text-sm outline-none focus:border-[#2d6f95] focus:ring-2 focus:ring-[#2d6f95]/15"
                 />
               </div>
@@ -216,7 +213,7 @@ export function PhoneCountrySelect({
                 ))
               ) : (
                 <p className="px-3 py-5 text-center text-sm text-muted">
-                  לא נמצאה קידומת מתאימה
+                  {isRtl ? "לא נמצאה קידומת מתאימה" : "No matching calling code"}
                 </p>
               )}
             </div>
@@ -228,24 +225,34 @@ export function PhoneCountrySelect({
 
   if (prefersNative) {
     return (
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value as CountryCode)}
-        onKeyDown={handleNumericSearch}
-        disabled={disabled}
-        aria-label={t("contact.countryCode")}
-        className={nativeSelectClass}
-        dir={isRtl ? "rtl" : "ltr"}
-      >
-        {options.map((option) => (
-          <NativeOption
-            key={option.iso}
-            option={option}
-            isRtl={!!isRtl}
-            codeOnly={option.iso === value}
-          />
-        ))}
-      </select>
+      <div className="relative shrink-0">
+        <select
+          value={value}
+          onChange={(e) => onChange(e.target.value as CountryCode)}
+          onKeyDown={handleNumericSearch}
+          disabled={disabled}
+          aria-label={t("contact.countryCode")}
+          className={nativeSelectClass}
+          dir={isRtl ? "rtl" : "ltr"}
+        >
+          {options.map((option) => (
+            <NativeOption
+              key={option.iso}
+              option={option}
+              isRtl={!!isRtl}
+              codeOnly={option.iso === value}
+            />
+          ))}
+        </select>
+        <ChevronDown
+          className={cn(
+            "pointer-events-none absolute top-1/2 h-4 w-4 -translate-y-1/2 text-[#34495d]",
+            isRtl ? "left-2" : "right-2"
+          )}
+          strokeWidth={2.5}
+          aria-hidden
+        />
+      </div>
     );
   }
 
