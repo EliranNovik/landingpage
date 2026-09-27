@@ -61,6 +61,14 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, "index.html"),
+        israelMigration: path.resolve(__dirname, "israel-migration.html"),
+      },
+    },
+  },
   server: {
     port: 5176,
     strictPort: true,

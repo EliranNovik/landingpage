@@ -2,20 +2,28 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronUp, Mail, MessageCircle, Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/OfficeContactButtons";
 import { OFFICE_CONTACT } from "@/data/contact";
-import { GERMAN_CITIZENSHIP_SOURCE_CODE } from "@/lib/sourceCode";
+import {
+  GERMAN_CITIZENSHIP_SOURCE_CODE,
+  ISRAEL_MIGRATION_SOURCE_CODE,
+} from "@/lib/sourceCode";
 import { cn } from "@/lib/utils";
 
 interface GermanContactFabProps {
   language?: "he" | "en";
+  topic?: "german-citizenship" | "israel-migration";
 }
 
 export function GermanContactFab({
   language = "he",
+  topic = "german-citizenship",
 }: GermanContactFabProps) {
   const isEnglish = language === "en";
-  const whatsappText = isEnglish
-    ? `Hello, I am interested in checking my eligibility for German citizenship (${GERMAN_CITIZENSHIP_SOURCE_CODE}) and would like more information.`
-    : `שלום, אני מעוניין/ת לבדוק זכאות לאזרחות גרמנית (${GERMAN_CITIZENSHIP_SOURCE_CODE}) ואשמח לקבל פרטים נוספים.`;
+  const whatsappText =
+    topic === "israel-migration"
+      ? `שלום, אני מעוניין/ת לקבל מידע על הסדרת מעמד לבן או בת זוג בישראל (${ISRAEL_MIGRATION_SOURCE_CODE}) ואשמח לקבל פרטים נוספים.`
+      : isEnglish
+        ? `Hello, I am interested in checking my eligibility for German citizenship (${GERMAN_CITIZENSHIP_SOURCE_CODE}) and would like more information.`
+        : `שלום, אני מעוניין/ת לבדוק זכאות לאזרחות גרמנית (${GERMAN_CITIZENSHIP_SOURCE_CODE}) ואשמח לקבל פרטים נוספים.`;
   const actions = [
     {
       id: "phone",

@@ -14,12 +14,13 @@ const socialIcons = {
 } as const;
 
 interface FooterProps {
-  variant?: "default" | "german";
+  variant?: "default" | "german" | "migration";
 }
 
 export function Footer({ variant = "default" }: FooterProps) {
   const { t, i18n } = useTranslation();
-  const isGerman = variant === "german";
+  const isGerman = variant !== "default";
+  const isMigration = variant === "migration";
   const isEnglish = !i18n.language.startsWith("he");
   const year = new Date().getFullYear();
   const { address, email, mapsUrl, phone, phoneDisplay } = OFFICE_CONTACT;
@@ -54,7 +55,9 @@ export function Footer({ variant = "default" }: FooterProps) {
               )}
             >
               {isGerman
-                ? isEnglish
+                ? isMigration
+                  ? "ליווי משפטי מקצועי להסדרת מעמד בישראל — מבדיקת המקרה ועד להשלמת ההליך מול רשות האוכלוסין."
+                  : isEnglish
                   ? "Professional legal guidance for German citizenship and passports — from eligibility review through receipt of the passport."
                   : "ליווי משפטי מקצועי לקבלת אזרחות ודרכון גרמני — מבדיקת הזכאות ועד לקבלת הדרכון."
                 : t("footer.tagline")}

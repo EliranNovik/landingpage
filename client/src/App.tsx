@@ -10,6 +10,7 @@ import { TeamSection } from "@/components/TeamSection";
 import { VideosSection } from "@/components/VideosSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { GermanCitizenshipPage } from "@/components/GermanCitizenshipPage";
+import { IsraelMigrationPage } from "@/components/IsraelMigrationPage";
 // import { WhyChooseUsSection } from "@/components/WhyChooseUsSection";
 
 function App() {
@@ -26,6 +27,10 @@ function App() {
 
   if (pathname === "/german-citizenship") {
     return <GermanCitizenshipPage language="he" />;
+  }
+
+  if (pathname === "/israel-migration") {
+    return <IsraelMigrationPage />;
   }
 
   return (

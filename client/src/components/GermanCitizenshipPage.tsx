@@ -433,7 +433,11 @@ export function GermanCitizenshipPage({
           className="german-transition-rounded relative scroll-mt-24 overflow-hidden py-20 sm:py-24"
         >
           <div className="absolute inset-0 german-story-bg" />
-          <div className="relative mx-auto max-w-5xl px-5 text-center sm:px-8">
+          <div
+            className={`relative mx-auto max-w-5xl px-5 sm:px-8 ${
+              isEnglish ? "text-left" : "text-right"
+            }`}
+          >
             <ScrollReveal>
               <span className="inline-flex items-center gap-2.5 rounded-full bg-[#2d6f95]/10 px-5 py-2.5 text-base font-bold text-[#245a79] sm:text-lg">
                 <Pilcrow className="h-5 w-5 shrink-0" strokeWidth={2.2} aria-hidden />
@@ -441,7 +445,7 @@ export function GermanCitizenshipPage({
                   ? "Legal reforms have opened new opportunities"
                   : "שינויים בחוק פתחו הזדמנויות חדשות"}
               </span>
-              <div className="mt-5 flex items-center justify-center gap-4">
+              <div className="mt-5 flex items-center justify-start gap-4">
                 <h2 className="font-sans text-3xl font-extrabold leading-tight sm:text-4xl">
                   {isEnglish
                     ? "Easier pathways to a German passport"
@@ -499,9 +503,7 @@ export function GermanCitizenshipPage({
 
             <ScrollReveal delay={180}>
               <div
-                className={`relative mx-auto mt-14 max-w-4xl px-2 sm:px-6 ${
-                  isEnglish ? "md:text-left" : ""
-                }`}
+                className="relative mx-auto mt-14 max-w-4xl px-2 text-start sm:px-6"
               >
                 <div>
                   <h3 className="font-sans text-2xl font-extrabold">
@@ -704,7 +706,11 @@ export function GermanCitizenshipPage({
           className="german-transition-rounded-reverse scroll-mt-24 bg-[#e8ebef] pb-44 pt-36 sm:pb-52 sm:pt-44"
         >
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
-            <ScrollReveal className="text-center">
+            <ScrollReveal
+              className={`max-w-3xl ${
+                isEnglish ? "mr-auto text-left" : "ml-auto text-right"
+              }`}
+            >
               <p className="text-base font-bold tracking-wide text-[#2d6f95] sm:text-lg">
                 {isEnglish ? "A clear and structured process" : "תהליך ברור ומסודר"}
               </p>
@@ -717,7 +723,16 @@ export function GermanCitizenshipPage({
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {processSteps.map(({ icon: Icon, title, text }, index) => (
                 <ScrollReveal key={title} delay={index * 90}>
-                  <article className="h-full rounded-3xl border border-[#d9dde2] bg-white p-7 shadow-lg shadow-black/5">
+                  <article
+                    className={`group relative h-full overflow-hidden border border-white/80 bg-white/90 p-7 shadow-[0_16px_38px_rgba(13,34,56,0.09)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_48px_rgba(13,34,56,0.14)] ${
+                      index === 0
+                        ? "rounded-[2.75rem_0.75rem_2.75rem_1rem]"
+                        : index === 1
+                          ? "rounded-[0.75rem_2.75rem_0.75rem_2.75rem]"
+                          : "rounded-[2.75rem_1rem_2.75rem_0.75rem]"
+                    } ${isEnglish ? "text-left" : "text-right"}`}
+                  >
+                    <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-l from-[#2d6f95] via-[#71a8c5] to-[#d8bd83] opacity-70" />
                     <div className="flex items-center gap-4">
                       <Icon
                         className="h-10 w-10 shrink-0 text-[#2d6f95]"
