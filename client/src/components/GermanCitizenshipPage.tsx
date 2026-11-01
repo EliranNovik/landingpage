@@ -16,7 +16,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
 import { GermanContactFab } from "@/components/GermanContactFab";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { siteLogo, siteLogoAlt, teamPhoto } from "@/data/assets";
+import { siteLogo, siteLogoAlt } from "@/data/assets";
 import i18n from "@/i18n";
 import { GERMAN_CITIZENSHIP_SOURCE_CODE } from "@/lib/sourceCode";
 
@@ -100,7 +100,7 @@ const englishEligibilityQuestions = [
   },
   {
     title: "What happens next?",
-    text: "Our dedicated department guides Israeli families toward European citizenship with professionalism, transparency, and personal support at every stage.",
+    text: "Our dedicated department guides families toward European citizenship with professionalism, transparency, and personal support at every stage.",
   },
 ];
 
@@ -186,6 +186,22 @@ export function GermanCitizenshipPage({
           title: "תקשורת ברורה במספר שפות",
           text: "שירות מקצועי בעברית, אנגלית וגרמנית, עם עדכונים ברורים בכל שלב.",
         },
+      ];
+  const citizenshipVideos = isEnglish
+    ? [
+        ["zvKgJiQPhIc", "German citizenship eligibility"],
+        ["QHZEataejK4", "German citizenship legal guidance"],
+        ["kX_spmeTF3c", "Applying for German citizenship"],
+        ["8VR6mwKkMUQ", "German citizenship — quick legal insight"],
+        ["4SToUjXFFGM", "German passport — quick legal insight"],
+        ["C_toOLSFaCM", "German citizenship application tip"],
+        ["dYTpyDN-uPw", "German citizenship eligibility tip"],
+        ["FQRka592Cos", "German citizenship process tip"],
+        ["bpIT7Q1DfNc", "German citizenship legal tip"],
+      ]
+    : [
+        ["ihoeFNe8WSA", "הוצאת דרכון גרמני — דקר, פקס ושות׳"],
+        ["nzo4qhRv-rI", "זכאות לאזרחות גרמנית — דקר, פקס ושות׳"],
       ];
   const [languageReady, setLanguageReady] = useState(() =>
     i18n.language.startsWith(language)
@@ -536,15 +552,15 @@ export function GermanCitizenshipPage({
             >
               <div className="relative h-full">
                 <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-[#2d6f95]/15 to-[#d8bd83]/15 blur-2xl" />
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] shadow-[0_24px_65px_rgba(13,34,56,0.18)]">
+                <div className="relative aspect-[1024/517] overflow-hidden rounded-[1.75rem] shadow-[0_24px_65px_rgba(13,34,56,0.18)]">
                   <img
-                    src={teamPhoto}
+                    src="/german-citizenship-team.jpg"
                     alt={
                       isEnglish
                         ? "The Decker, Pex & Co. legal team"
                         : "הצוות המשפטי של דקר, פקס ושות׳"
                     }
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="absolute inset-0 h-full w-full object-contain"
                     loading="lazy"
                     decoding="async"
                   />
@@ -632,54 +648,24 @@ export function GermanCitizenshipPage({
               </p>
             </ScrollReveal>
 
-            <div className="mt-10 grid gap-6 lg:grid-cols-2">
-              <ScrollReveal delay={120}>
-                <div className="overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl shadow-black/30">
-                  <div className="aspect-video">
-                    <iframe
-                      className="h-full w-full"
-                      src={
-                        isEnglish
-                          ? "https://www.youtube-nocookie.com/embed/X8BPaMIjv98?start=10&rel=0"
-                          : "https://www.youtube-nocookie.com/embed/ihoeFNe8WSA?start=1&rel=0"
-                      }
-                      title={
-                        isEnglish
-                          ? "Obtaining a German passport — Decker, Pex & Co."
-                          : "הוצאת דרכון גרמני — דקר, פקס ושות׳"
-                      }
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      allowFullScreen
-                      loading="lazy"
-                    />
+            <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {citizenshipVideos.map(([videoId, title], index) => (
+                <ScrollReveal key={videoId} delay={120 + (index % 3) * 60}>
+                  <div className="overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl shadow-black/30">
+                    <div className="aspect-video">
+                      <iframe
+                        className="h-full w-full"
+                        src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0`}
+                        title={title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
-                </div>
-              </ScrollReveal>
-
-              <ScrollReveal delay={180}>
-                <div className="overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl shadow-black/30">
-                  <div className="aspect-video">
-                    <iframe
-                      className="h-full w-full"
-                      src={
-                        isEnglish
-                          ? "https://www.youtube-nocookie.com/embed/zvKgJiQPhIc?rel=0"
-                          : "https://www.youtube-nocookie.com/embed/nzo4qhRv-rI?rel=0"
-                      }
-                      title={
-                        isEnglish
-                          ? "German citizenship eligibility — Decker, Pex & Co."
-                          : "זכאות לאזרחות גרמנית — דקר, פקס ושות׳"
-                      }
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      allowFullScreen
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              </ScrollReveal>
+                </ScrollReveal>
+              ))}
             </div>
 
             <ScrollReveal delay={240} className="mt-8 text-center">

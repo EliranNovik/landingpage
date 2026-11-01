@@ -17,7 +17,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
 import { GermanContactFab } from "@/components/GermanContactFab";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { dunsLogo, siteLogo, siteLogoAlt, teamPhoto } from "@/data/assets";
+import { dunsLogo, siteLogo, siteLogoAlt } from "@/data/assets";
 import i18n from "@/i18n";
 import { ISRAEL_MIGRATION_SOURCE_CODE } from "@/lib/sourceCode";
 
@@ -315,8 +315,8 @@ export function IsraelMigrationPage() {
             <ScrollReveal variant="fade-right">
               <div className="relative">
                 <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-[#2d6f95]/15 to-[#d8bd83]/15 blur-2xl" />
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] shadow-[0_24px_65px_rgba(13,34,56,0.18)]">
-                  <img src={teamPhoto} alt="צוות משרד עורכי הדין דקר, פקס ושות׳" className="h-full w-full object-cover" loading="lazy" />
+                <div className="relative aspect-[1024/517] overflow-hidden rounded-[1.75rem] shadow-[0_24px_65px_rgba(13,34,56,0.18)]">
+                  <img src="/german-citizenship-team.jpg" alt="צוות משרד עורכי הדין דקר, פקס ושות׳" className="h-full w-full object-contain" loading="lazy" />
                 </div>
               </div>
             </ScrollReveal>
@@ -359,14 +359,37 @@ export function IsraelMigrationPage() {
               <h2 className="mt-3 font-sans text-3xl font-extrabold sm:text-4xl">
                 מהו ההליך המדורג להסדרת מעמד בן זוג זר בישראל?
               </h2>
-              <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-white/70">
-                צפו בהסברים על הסדרת מעמד, ראיונות כנות קשר והדרך להתנהל נכון מול רשות האוכלוסין.
-              </p>
+            </ScrollReveal>
+            <ScrollReveal delay={80}>
+              <div className="mx-auto mt-7 max-w-4xl space-y-4 text-right text-base leading-8 text-white/78 sm:text-lg">
+                <p>
+                  הליך חיים משותפים, המכונה גם &quot;ההליך המדורג&quot;, מאפשר
+                  לאזרחים ישראלים ולתושבי קבע להסדיר את מעמדו החוקי של בן או בת
+                  זוג זרים בישראל, גם כאשר בני הזוג אינם נשואים.
+                </p>
+                <p>
+                  במסגרת ההליך, רשות האוכלוסין וההגירה בוחנת את כנות הקשר
+                  הזוגי, קיומם של חיים משותפים ומרכז חיים בישראל. התהליך כולל
+                  הגשת מסמכים וראיות לקשר, ראיונות ובדיקות תקופתיות, ובמהלכו
+                  ניתן לקבל ולחדש אשרות שהייה ועבודה בהתאם לנסיבות ולנהלים
+                  החלים.
+                </p>
+                <p>
+                  מדובר בהליך הנמשך מספר שנים, שבסיומו ניתן, בכפוף לעמידה
+                  בתנאים, לקבל מעמד של תושב קבע או אזרחות ישראלית, בהתאם לסוג
+                  הקשר ולמסלול המשפטי הרלוונטי.
+                </p>
+                <p className="font-semibold text-white">
+                  משרד דקר, פקס ושות׳ מלווה זוגות נשואים וידועים בציבור לאורך
+                  כל ההליך, החל מבדיקת הזכאות והכנת הבקשה ועד להסדרת המעמד
+                  בישראל.
+                </p>
+              </div>
             </ScrollReveal>
             <div className="mt-10 grid gap-6 lg:grid-cols-2">
               {[
-                ["c0pbHb1e5YI", "הסדרת מעמד לבן זוג זר בישראל"],
-                ["vWD2OZwOnAg", "הליך מדורג וראיונות מול משרד הפנים"],
+                ["k-6FoadR4EA", "הסדרת מעמד לבת זוג זרה בישראל"],
+                ["kSqIG3liJC0", "הסדרת מעמד בישראל — הסבר קצר"],
               ].map(([videoId, title], index) => (
                 <ScrollReveal key={videoId} delay={120 + index * 60}>
                   <div className="overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl shadow-black/30">
