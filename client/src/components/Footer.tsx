@@ -58,7 +58,7 @@ export function Footer({ variant = "default" }: FooterProps) {
                 ? isMigration
                   ? "ליווי משפטי מקצועי להסדרת מעמד בישראל — מבדיקת המקרה ועד להשלמת ההליך מול רשות האוכלוסין."
                   : isEnglish
-                  ? "Professional legal guidance for German citizenship and passports — from eligibility review through receipt of the passport."
+                  ? "Professional legal guidance for German and Austrian citizenship and passports — from eligibility review through receipt of the passport."
                   : "ליווי משפטי מקצועי לקבלת אזרחות ודרכון גרמני — מבדיקת הזכאות ועד לקבלת הדרכון."
                 : t("footer.tagline")}
             </p>

@@ -6,7 +6,6 @@ import {
   ChevronRight,
   FileCheck2,
   HeartHandshake,
-  Images,
   Landmark,
   Languages,
   Scale,
@@ -43,6 +42,15 @@ const processSteps = [
     title: "ליווי עד להסדרת המעמד",
     text: "נייצג אתכם מול הרשויות, נטפל בדרישות נוספות ונלווה אתכם עד לקבלת ההחלטה.",
   },
+];
+
+const clientPhotos = [
+  { src: "/israel-migration-client-1.jpg", position: "object-[center_20%]" },
+  { src: "/israel-migration-client-2.jpg", position: "object-center" },
+  { src: "/israel-migration-client-3.jpg", position: "object-center" },
+  { src: "/israel-migration-client-4.jpg", position: "object-center" },
+  { src: "/israel-migration-client-5.jpg", position: "object-[center_30%]" },
+  { src: "/israel-migration-client-6.jpg", position: "object-center" },
 ];
 
 const teamHighlights = [
@@ -82,13 +90,15 @@ export function IsraelMigrationPage() {
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setStorySlide((current) => (current + 1) % 3);
+      setStorySlide((current) => (current + 1) % clientPhotos.length);
     }, 4500);
     return () => window.clearInterval(timer);
   }, []);
 
   const changeStorySlide = (direction: 1 | -1) => {
-    setStorySlide((current) => (current + direction + 3) % 3);
+    setStorySlide(
+      (current) => (current + direction + clientPhotos.length) % clientPhotos.length
+    );
   };
 
   const scrollToForm = () => {
@@ -167,29 +177,29 @@ export function IsraelMigrationPage() {
             aria-hidden
           />
           <div className="absolute inset-0 bg-gradient-to-l from-[#071727]/95 via-[#0d2238]/78 to-[#0d2238]/55" />
-          <div className="relative mx-auto max-w-7xl px-5 pb-16 pt-4 sm:px-8 sm:pb-20 sm:pt-6 lg:pb-24 lg:pt-8">
-            <div className="mx-auto max-w-4xl text-center">
+          <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-16 pt-4 sm:px-8 sm:pb-20 sm:pt-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14 lg:pb-24 lg:pt-10">
+            <div className="mx-auto max-w-4xl text-center lg:mx-0 lg:text-right">
               <ScrollReveal>
                 <h1 className="font-sans text-[2.55rem] font-extrabold leading-tight sm:text-[3.25rem] lg:text-[4rem]">
                   קבלו אזרחות ישראלית
                   <span className="block text-[#d8bd83]">לבן או בת הזוג</span>
                 </h1>
                 <p className="mt-4 font-sans text-2xl font-extrabold text-[#d8bd83] sm:text-3xl">
-                  99% הצלחה
+                  100% אחוזי הצלחה למתאימים
                 </p>
                 <span className="mt-4 inline-flex rounded-full border border-[#d8bd83]/35 bg-[#d8bd83]/10 px-4 py-1.5 text-sm font-bold text-[#e2c994]">
                   בדיקת מקרה ראשונית ללא התחייבות
                 </span>
               </ScrollReveal>
 
-              <div className="mx-auto mt-8 max-w-3xl">
+              <div className="mx-auto mt-8 max-w-3xl lg:mx-0">
                 {heroPoints.map((point, index) => (
                   <ScrollReveal key={point} delay={80 + index * 60}>
-                    <div className="flex items-center justify-center gap-4">
+                    <div className="flex items-center justify-center gap-4 lg:justify-start">
                       <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#d8bd83] text-[#0d2238]">
                         <Check className="h-5 w-5" strokeWidth={3} aria-hidden />
                       </span>
-                      <span className={`py-3.5 text-center text-base font-medium sm:text-lg ${index < heroPoints.length - 1 ? "border-b border-white/[0.09]" : ""}`}>
+                      <span className={`py-3.5 text-center text-base lg:text-right font-medium sm:text-lg ${index < heroPoints.length - 1 ? "border-b border-white/[0.09]" : ""}`}>
                         {point}
                       </span>
                     </div>
@@ -198,7 +208,7 @@ export function IsraelMigrationPage() {
               </div>
 
               <ScrollReveal delay={260}>
-                <div className="mt-8 flex items-center justify-center gap-5 border-t border-white/15 pt-6">
+                <div className="mt-8 flex items-center justify-center gap-5 border-t border-white/15 pt-6 lg:justify-start">
                   <p className="text-lg font-bold leading-7 sm:text-xl">
                     משרד דקר, פקס, לוי — בדיוק עורכי הדין שחיפשתם
                   </p>
@@ -208,14 +218,14 @@ export function IsraelMigrationPage() {
             </div>
 
             <ScrollReveal delay={160}>
-              <div className="relative mx-auto mt-12 w-full text-white sm:rounded-3xl sm:border sm:border-white/10 sm:bg-white/[0.06] sm:p-7 sm:shadow-2xl sm:shadow-[#071522]/20 sm:backdrop-blur-sm">
+              <div className="relative mx-auto w-full max-w-xl text-white lg:mx-0">
                 <ContactForm
                   id="israel-migration-form"
                   variant="minimal"
                   sourceCode={ISRAEL_MIGRATION_SOURCE_CODE}
                   stableCountrySelect
                   hideHeader
-                  className="german-lead-form german-inline-form scroll-mt-36"
+                  className="german-lead-form german-inline-form german-stacked-form scroll-mt-36"
                 />
               </div>
             </ScrollReveal>
@@ -241,15 +251,18 @@ export function IsraelMigrationPage() {
                 }}
               >
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] bg-gradient-to-br from-[#dce8ef] via-[#eef3f6] to-[#cad9e2] shadow-[0_22px_55px_rgba(13,34,56,0.14)]">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(45,111,149,0.2),transparent_40%)]" />
-                  <div className="absolute inset-0 grid place-items-center text-center text-[#245a79]">
-                    <div key={storySlide} className="animate-in fade-in duration-500">
-                      <Images className="mx-auto h-14 w-14 opacity-60" strokeWidth={1.5} aria-hidden />
-                      <p className="mt-3 text-sm font-bold">
-                        תמונת לקוח {storySlide + 1} תתווסף בקרוב
-                      </p>
-                    </div>
-                  </div>
+                  {clientPhotos.map(({ src, position }, index) => (
+                    <img
+                      key={src}
+                      src={src}
+                      alt={`לקוחות המשרד לאחר הסדרת המעמד — תמונה ${index + 1}`}
+                      className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${position} ${
+                        storySlide === index ? "opacity-100" : "opacity-0"
+                      }`}
+                      loading="lazy"
+                      aria-hidden={storySlide !== index}
+                    />
+                  ))}
                   <button
                     type="button"
                     onClick={() => changeStorySlide(-1)}
@@ -268,7 +281,7 @@ export function IsraelMigrationPage() {
                   </button>
                 </div>
                 <div className="mt-5 flex items-center justify-center gap-2.5">
-                  {[0, 1, 2].map((slide) => (
+                  {clientPhotos.map((_, slide) => (
                     <button
                       key={slide}
                       type="button"
@@ -357,7 +370,7 @@ export function IsraelMigrationPage() {
                 מידע מעורכי דין המתמחים בהגירה ומעמד
               </p>
               <h2 className="mt-3 font-sans text-3xl font-extrabold sm:text-4xl">
-                מהו ההליך המדורג להסדרת מעמד בן זוג זר בישראל?
+                מהו הליך חיים משותפים בישראל?
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={80}>
@@ -386,14 +399,23 @@ export function IsraelMigrationPage() {
                 </p>
               </div>
             </ScrollReveal>
-            <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            <div className="mx-auto mt-10 grid max-w-5xl items-center gap-6 lg:grid-cols-[1fr_0.633fr]">
               {[
-                ["k-6FoadR4EA", "הסדרת מעמד לבת זוג זרה בישראל"],
-                ["kSqIG3liJC0", "הסדרת מעמד בישראל — הסבר קצר"],
-              ].map(([videoId, title], index) => (
-                <ScrollReveal key={videoId} delay={120 + index * 60}>
-                  <div className="overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl shadow-black/30">
-                    <div className="aspect-video">
+                { videoId: "k-6FoadR4EA", title: "הסדרת מעמד לבת זוג זרה בישראל", isShort: false },
+                { videoId: "kSqIG3liJC0", title: "הסדרת מעמד בישראל — הסבר קצר", isShort: true },
+                { videoId: "t9YSHQr1coE", title: "נשארתם בישראל לאחר שפג תוקף האשרה? מה קורה עכשיו", isShort: false },
+              ].map(({ videoId, title, isShort }, index) => (
+                <ScrollReveal
+                  key={videoId}
+                  delay={120 + index * 60}
+                  className={isShort ? "lg:col-start-2 lg:row-span-2 lg:row-start-1" : "lg:col-start-1"}
+                >
+                  <div
+                    className={`overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl shadow-black/30 ${
+                      isShort ? "mx-auto w-full max-w-[20rem] lg:max-w-none" : ""
+                    }`}
+                  >
+                    <div className={isShort ? "aspect-[9/16]" : "aspect-video"}>
                       <iframe
                         className="h-full w-full"
                         src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0`}

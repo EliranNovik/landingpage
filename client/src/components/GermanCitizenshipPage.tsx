@@ -16,6 +16,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
 import { GermanContactFab } from "@/components/GermanContactFab";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { VideoCarousel } from "@/components/VideoCarousel";
 import { siteLogo, siteLogoAlt } from "@/data/assets";
 import i18n from "@/i18n";
 import { GERMAN_CITIZENSHIP_SOURCE_CODE } from "@/lib/sourceCode";
@@ -31,8 +32,8 @@ const hebrewEligibilityPoints = [
 
 const englishEligibilityPoints = [
   "100% success rate for eligible applicants",
-  "An experienced German citizenship team at your service",
-  "Years of success locating records in German archives",
+  "An experienced German & Austrian citizenship team at your service",
+  "Years of success locating records in German and Austrian archives",
   "Document certification with a German-speaking notary",
   "End-to-end handling without unnecessary delays",
   "No need to give up your existing citizenship",
@@ -60,17 +61,17 @@ const englishProcessSteps = [
   {
     icon: FileSearch,
     title: "Eligibility review and document search",
-    text: "We review your family history and locate relevant records in Israel and German archives.",
+    text: "We review your family history and locate relevant records in Israel and in German and Austrian archives.",
   },
   {
     icon: Scale,
     title: "Building the legal application",
-    text: "Our German citizenship team prepares the application, translations, certifications, and required documents.",
+    text: "Our German & Austrian citizenship team prepares the application, translations, certifications, and required documents.",
   },
   {
     icon: Landmark,
     title: "Submission and ongoing representation",
-    text: "We manage the process with the German authorities and keep you informed through the grant of citizenship.",
+    text: "We manage the process with the German or Austrian authorities and keep you informed through the grant of citizenship.",
   },
 ];
 
@@ -92,11 +93,11 @@ const hebrewEligibilityQuestions = [
 const englishEligibilityQuestions = [
   {
     title: "Who may be eligible?",
-    text: "Children, grandchildren, and great-grandchildren of German citizens or residents who fled Germany during the persecution of 1933–1945 may be eligible for German citizenship.",
+    text: "Children, grandchildren, and great-grandchildren of German or Austrian citizens or residents who fled Nazi persecution may be eligible for German or Austrian citizenship.",
   },
   {
     title: "Do not have the documents?",
-    text: "An eligibility review can begin even without documents. Our team knows the relevant archives, authorities, and legal requirements in Germany.",
+    text: "An eligibility review can begin even without documents. Our team knows the relevant archives, authorities, and legal requirements in Germany and Austria.",
   },
   {
     title: "What happens next?",
@@ -157,12 +158,12 @@ export function GermanCitizenshipPage({
         {
           icon: Archive,
           title: "German-speaking archival research specialist",
-          text: "Focused research in German archives to locate civil, residency, and family records relevant to your application.",
+          text: "Focused research in German and Austrian archives to locate civil, residency, and family records relevant to your application.",
         },
         {
           icon: Scale,
           title: "Experienced citizenship lawyers",
-          text: "Legal analysis, application preparation, and representation throughout the German citizenship process.",
+          text: "Legal analysis, application preparation, and representation throughout the German and Austrian citizenship process.",
         },
         {
           icon: Languages,
@@ -192,21 +193,27 @@ export function GermanCitizenshipPage({
         ["zvKgJiQPhIc", "German citizenship eligibility"],
         ["QHZEataejK4", "German citizenship legal guidance"],
         ["kX_spmeTF3c", "Applying for German citizenship"],
-        ["8VR6mwKkMUQ", "German citizenship — quick legal insight"],
-        ["4SToUjXFFGM", "German passport — quick legal insight"],
-        ["C_toOLSFaCM", "German citizenship application tip"],
-        ["dYTpyDN-uPw", "German citizenship eligibility tip"],
-        ["FQRka592Cos", "German citizenship process tip"],
-        ["bpIT7Q1DfNc", "German citizenship legal tip"],
       ]
     : [
         ["ihoeFNe8WSA", "הוצאת דרכון גרמני — דקר, פקס ושות׳"],
         ["nzo4qhRv-rI", "זכאות לאזרחות גרמנית — דקר, פקס ושות׳"],
+        ["KmEbIPww2YE", "דרכון אוסטרי — מי זכאי על פי חוק האזרחות האוסטרי?"],
       ];
+  const citizenshipShorts = isEnglish
+    ? [
+        ["8VR6mwKkMUQ", "What the German citizenship process looks like"],
+        ["4SToUjXFFGM", "Why I chose to get a German passport"],
+        ["C_toOLSFaCM", "The story behind my German citizenship"],
+        ["dYTpyDN-uPw", "The journey to German citizenship"],
+        ["FQRka592Cos", "Think you qualify for a German passport?"],
+        ["bpIT7Q1DfNc", "High eligibility, not a simple process"],
+      ]
+    : [];
   const [languageReady, setLanguageReady] = useState(() =>
     i18n.language.startsWith(language)
   );
   const [formFocused, setFormFocused] = useState(false);
+  const [playingShort, setPlayingShort] = useState<string | null>(null);
 
   useEffect(() => {
     void i18n.changeLanguage(language).finally(() => setLanguageReady(true));
@@ -215,7 +222,7 @@ export function GermanCitizenshipPage({
     document.documentElement.classList.add("german-page-active");
     document.body.classList.add("german-page-active");
     document.title = isEnglish
-      ? "German Citizenship and Passport | Decker, Pex & Co."
+      ? "German & Austrian Citizenship and Passports | Decker, Pex & Co."
       : "אזרחות ודרכון גרמני | דקר, פקס ושות׳";
 
     return () => {
@@ -315,11 +322,11 @@ export function GermanCitizenshipPage({
             className="inline-flex w-auto justify-self-start items-center gap-1.5 rounded-full bg-[#2d6f95] px-3.5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#071522]/20 transition hover:-translate-y-0.5 hover:bg-[#245a79] sm:gap-2 sm:px-5"
           >
             <span className="sm:hidden">
-              {isEnglish ? "Check eligibility" : "בדיקת זכאות"}
+              {isEnglish ? "Free Consultation" : "בדיקת זכאות"}
             </span>
             <span className="hidden sm:inline">
               {isEnglish
-                ? "Free eligibility check"
+                ? "Get a Free Consultation"
                 : "בדיקת זכאות ללא התחייבות"}
             </span>
             {isEnglish ? (
@@ -356,7 +363,7 @@ export function GermanCitizenshipPage({
               <ScrollReveal>
                 <p className="mb-4 text-base font-bold tracking-[0.12em] text-[#d8bd83] sm:text-lg">
                   {isEnglish
-                    ? "Decker, Pex & Co. — German Citizenship Department"
+                    ? "Decker, Pex & Co. — German & Austrian Citizenship Department"
                     : "דקר, פקס ושות׳ — המחלקה לאזרחות גרמנית"}
                 </p>
                 <span className="inline-flex rounded-full border border-[#d8bd83]/35 bg-[#d8bd83]/10 px-4 py-1.5 text-sm font-bold text-[#e2c994]">
@@ -371,9 +378,9 @@ export function GermanCitizenshipPage({
                       : "text-[2.6rem] sm:text-[3.25rem] lg:text-[4rem]"
                   }`}
                 >
-                  {isEnglish ? "German Passport" : "דרכון גרמני"}
+                  {isEnglish ? "German & Austrian Citizenship" : "דרכון גרמני"}
                   <span className="block text-[#d8bd83]">
-                    {isEnglish ? "Citizenship with Confidence" : "ואזרחות בביטחון"}
+                    {isEnglish ? "Passports with Confidence" : "ואזרחות בביטחון"}
                   </span>
                 </h1>
                 <p className="mt-6 max-w-2xl text-xl font-bold leading-relaxed text-white sm:text-2xl">
@@ -427,7 +434,7 @@ export function GermanCitizenshipPage({
                       <ArrowRight className="h-4 w-4" aria-hidden />
                     )}
                     {isEnglish
-                      ? "More information about German citizenship"
+                      ? "More information about German & Austrian citizenship"
                       : "למידע נוסף על אזרחות גרמנית"}
                   </button>
                 )}
@@ -436,6 +443,13 @@ export function GermanCitizenshipPage({
                     variant="minimal"
                     sourceCode={GERMAN_CITIZENSHIP_SOURCE_CODE}
                     stableCountrySelect
+                    title={isEnglish ? "Let's Discuss Your Case" : undefined}
+                    subtitle={
+                      isEnglish
+                        ? "Tell us what happened. We'll guide you through the next steps."
+                        : undefined
+                    }
+                    submitLabel={isEnglish ? "Get a Free Consultation" : undefined}
                     className="german-lead-form german-hero-form scroll-mt-36"
                   />
                 </div>
@@ -464,22 +478,31 @@ export function GermanCitizenshipPage({
               <div className="mt-5 flex items-center justify-start gap-4">
                 <h2 className="font-sans text-3xl font-extrabold leading-tight sm:text-4xl">
                   {isEnglish
-                    ? "Easier pathways to a German passport"
+                    ? "Easier pathways to German and Austrian passports"
                     : "תקנות מקלות על קבלת דרכון גרמני"}
                 </h2>
                 {isEnglish && (
-                  <img
-                    src="/german-passport-isolated.png"
-                    alt="German passport"
-                    className="h-24 w-20 shrink-0 object-contain drop-shadow-[0_10px_14px_rgba(13,34,56,0.2)] sm:h-32 sm:w-28"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <div className="flex shrink-0 items-center">
+                    <img
+                      src="/german-passport-isolated.png"
+                      alt="German passport"
+                      className="relative z-10 h-24 w-20 -rotate-6 object-contain drop-shadow-[0_10px_14px_rgba(13,34,56,0.2)] sm:h-32 sm:w-28"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <img
+                      src="/austrian-passport-isolated.png"
+                      alt="Austrian passport"
+                      className="-ml-6 h-24 w-20 rotate-6 object-contain drop-shadow-[0_10px_14px_rgba(13,34,56,0.2)] sm:-ml-8 sm:h-32 sm:w-28"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
                 )}
               </div>
               <h3 className="mt-4 font-sans text-2xl font-bold text-[#245a79]">
                 {isEnglish
-                  ? "You may also be eligible for German citizenship"
+                  ? "You may also be eligible for German or Austrian citizenship"
                   : "אולי גם אתם זכאים לדרכון גרמני"}
               </h3>
             </ScrollReveal>
@@ -590,7 +613,7 @@ export function GermanCitizenshipPage({
                 </h2>
                 <p className="mt-5 text-lg leading-8 text-[#5d6c79]">
                   {isEnglish
-                    ? "Your application is handled by a multidisciplinary team that combines legal expertise with practical archival research in Germany. We coordinate the records, translations, certifications, and legal submissions as one structured process."
+                    ? "Your application is handled by a multidisciplinary team that combines legal expertise with practical archival research in Germany and Austria. We coordinate the records, translations, certifications, and legal submissions as one structured process."
                     : "הבקשה שלכם מטופלת על ידי צוות רב־תחומי המשלב מומחיות משפטית עם מחקר ארכיוני מעשי בגרמניה. אנו מרכזים את המסמכים, התרגומים, האימותים וההגשה המשפטית כתהליך אחד מסודר."}
                 </p>
 
@@ -633,12 +656,12 @@ export function GermanCitizenshipPage({
             <ScrollReveal className="text-center">
               <p className="text-base font-bold tracking-wide text-[#d8bd83] sm:text-lg">
                 {isEnglish
-                  ? "Guidance from a German citizenship lawyer"
+                  ? "Guidance from German and Austrian citizenship lawyers"
                   : "מידע מעורך דין המתמחה באזרחות גרמנית"}
               </p>
               <h2 className="mt-3 font-sans text-3xl font-extrabold sm:text-4xl">
                 {isEnglish
-                  ? "What you need to know about obtaining a German passport"
+                  ? "What you need to know about obtaining a German or Austrian passport"
                   : "כל מה שחשוב לדעת על הוצאת דרכון גרמני"}
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-white/70">
@@ -648,9 +671,18 @@ export function GermanCitizenshipPage({
               </p>
             </ScrollReveal>
 
-            <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {citizenshipVideos.map(([videoId, title], index) => (
-                <ScrollReveal key={videoId} delay={120 + (index % 3) * 60}>
+            <ScrollReveal delay={120} className="mt-10">
+              <VideoCarousel
+                label={isEnglish ? "Videos" : "סרטונים"}
+                rtl={!isEnglish}
+                previousLabel={isEnglish ? "Previous videos" : "הסרטונים הקודמים"}
+                nextLabel={isEnglish ? "Next videos" : "הסרטונים הבאים"}
+              >
+              {citizenshipVideos.map(([videoId, title]) => (
+                <div
+                  key={videoId}
+                  className="w-[85%] shrink-0 snap-start sm:w-[60%] lg:w-[calc((100%-3rem)/2.4)]"
+                >
                   <div className="overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl shadow-black/30">
                     <div className="aspect-video">
                       <iframe
@@ -664,9 +696,84 @@ export function GermanCitizenshipPage({
                       />
                     </div>
                   </div>
-                </ScrollReveal>
+                </div>
               ))}
-            </div>
+              </VideoCarousel>
+            </ScrollReveal>
+
+            {citizenshipShorts.length > 0 && (
+              <ScrollReveal delay={160} className="mt-12">
+              <VideoCarousel
+                label="Shorts"
+                rtl={!isEnglish}
+                previousLabel={isEnglish ? "Previous Shorts" : "הסרטונים הקודמים"}
+                nextLabel={isEnglish ? "Next Shorts" : "הסרטונים הבאים"}
+              >
+                {citizenshipShorts.map(([videoId, title]) => (
+                  <div
+                    key={videoId}
+                    className="w-[44%] shrink-0 snap-start sm:w-[30%] lg:w-[calc((100%-7.5rem)/5.4)]"
+                  >
+                    <div className="overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl shadow-black/30">
+                      <div className="relative aspect-[9/16]">
+                        {playingShort === videoId ? (
+                          <iframe
+                            className="h-full w-full"
+                            src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0&autoplay=1&playsinline=1`}
+                            title={title}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            allowFullScreen
+                          />
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => setPlayingShort(videoId)}
+                            aria-label={`${isEnglish ? "Play video" : "הפעלת סרטון"}: ${title}`}
+                            className="group absolute inset-0 h-full w-full"
+                          >
+                            <img
+                              src={`https://i.ytimg.com/vi/${videoId}/oardefault.jpg`}
+                              alt=""
+                              className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                            <span className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/5 to-transparent transition group-hover:bg-black/20" />
+                            <span
+                              dir="ltr"
+                              className="absolute left-3 top-3 flex items-center gap-1 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
+                              aria-hidden
+                            >
+                              <svg viewBox="0 0 24 24" className="h-5 w-5">
+                                <path
+                                  fill="currentColor"
+                                  d="M17.77 10.32l-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25z"
+                                />
+                                <path fill="#000" fillOpacity="0.55" d="M10 14.65v-5.3L15 12l-5 2.65z" />
+                              </svg>
+                              <span className="text-sm font-bold tracking-tight">Shorts</span>
+                            </span>
+                            <svg
+                              viewBox="0 0 24 24"
+                              className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_6px_14px_rgba(0,0,0,0.35)] transition group-hover:scale-110"
+                              aria-hidden
+                            >
+                              <path
+                                fill="#FF0033"
+                                d="M17.77 10.32l-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25z"
+                              />
+                              <path fill="#fff" d="M10 14.65v-5.3L15 12l-5 2.65z" />
+                            </svg>
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </VideoCarousel>
+              </ScrollReveal>
+            )}
 
             <ScrollReveal delay={240} className="mt-8 text-center">
               <button
@@ -675,7 +782,7 @@ export function GermanCitizenshipPage({
                 className="inline-flex items-center gap-2 rounded-full bg-[#2d6f95] px-7 py-3.5 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#245a79]"
               >
                 {isEnglish
-                  ? "Free eligibility check"
+                  ? "Get a Free Consultation"
                   : "בדיקת זכאות ללא התחייבות"}
                 {isEnglish ? (
                   <ArrowRight className="h-5 w-5" aria-hidden />
@@ -792,12 +899,12 @@ export function GermanCitizenshipPage({
             <ScrollReveal className="text-center">
               <h2 className="font-sans text-3xl font-extrabold">
                 {isEnglish
-                  ? "Your first step toward German citizenship starts with an eligibility review"
+                  ? "Let's Discuss Your Case"
                   : "הצעד הראשון לאזרחות גרמנית מתחיל בבדיקת זכאות"}
               </h2>
               <p className="mt-3 text-lg text-white/80">
                 {isEnglish
-                  ? "You do not need to have every document. Tell us your family history and we will review it."
+                  ? "Tell us what happened. We'll guide you through the next steps."
                   : "אין צורך להגיע עם כל המסמכים. ספרו לנו את הסיפור המשפחתי ונבדוק."}
               </p>
             </ScrollReveal>
@@ -810,6 +917,8 @@ export function GermanCitizenshipPage({
                   sourceCode={GERMAN_CITIZENSHIP_SOURCE_CODE}
                   stableCountrySelect
                   hideHeader
+                  submitLabel={isEnglish ? "Submit" : undefined}
+                  messagePlaceholder={isEnglish ? "Your message" : undefined}
                   className="german-lead-form german-inline-form"
                 />
               </div>

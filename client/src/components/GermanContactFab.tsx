@@ -22,7 +22,7 @@ export function GermanContactFab({
     topic === "israel-migration"
       ? `שלום, אני מעוניין/ת לקבל מידע על הסדרת מעמד לבן או בת זוג בישראל (${ISRAEL_MIGRATION_SOURCE_CODE}) ואשמח לקבל פרטים נוספים.`
       : isEnglish
-        ? `Hello, I am interested in checking my eligibility for German citizenship (${GERMAN_CITIZENSHIP_SOURCE_CODE}) and would like more information.`
+        ? `Hello, I am interested in checking my eligibility for German or Austrian citizenship (${GERMAN_CITIZENSHIP_SOURCE_CODE}) and would like more information.`
         : `שלום, אני מעוניין/ת לבדוק זכאות לאזרחות גרמנית (${GERMAN_CITIZENSHIP_SOURCE_CODE}) ואשמח לקבל פרטים נוספים.`;
   const actions = [
     {

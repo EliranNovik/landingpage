@@ -59,6 +59,10 @@ interface ContactFormProps {
   id?: string;
   hideHeader?: boolean;
   stableCountrySelect?: boolean;
+  title?: string;
+  subtitle?: string;
+  submitLabel?: string;
+  messagePlaceholder?: string;
 }
 
 export function ContactForm({
@@ -68,6 +72,10 @@ export function ContactForm({
   id = "contact-form",
   hideHeader = false,
   stableCountrySelect = false,
+  title,
+  subtitle,
+  submitLabel,
+  messagePlaceholder,
 }: ContactFormProps) {
   const { t, i18n } = useTranslation();
   const isEnglish = !i18n.language.startsWith("he");
@@ -175,7 +183,7 @@ export function ContactForm({
             : cn("text-2xl", isEnglish && "sm:text-3xl")
         )}
       >
-        {t("contact.title")}
+        {title ?? t("contact.title")}
       </h2>
       <p
         className={cn(
@@ -189,7 +197,8 @@ export function ContactForm({
               : "text-sm"
         )}
       >
-        {t(isMinimal ? "contact.subtitleMinimal" : "contact.subtitleDefault")}
+        {subtitle ??
+          t(isMinimal ? "contact.subtitleMinimal" : "contact.subtitleDefault")}
       </p>
     </div>
   );
@@ -360,7 +369,7 @@ export function ContactForm({
               id="message"
               name="message"
               dir={directionForText(form.message, isRtl ? "rtl" : "ltr")}
-              placeholder={t("contact.placeholders.message")}
+              placeholder={messagePlaceholder ?? t("contact.placeholders.message")}
               className={cn(
                 isMinimal ? minimalMessageClass : fieldClass,
                 fieldAlignClass
@@ -390,7 +399,7 @@ export function ContactForm({
                 {t("contact.submitting")}
               </>
             ) : (
-              t("contact.submit")
+              submitLabel ?? t("contact.submit")
             )}
           </Button>
           </div>

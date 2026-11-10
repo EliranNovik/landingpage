@@ -538,8 +538,14 @@ body:has(.german-page) {
     color: #9aa6b2;
   }
 
+  .german-stacked-form textarea {
+    height: 6.5rem;
+    min-height: 6.5rem;
+    overflow-y: auto;
+  }
+
   @media (min-width: 1024px) {
-    .german-inline-form form {
+    .german-inline-form:not(.german-stacked-form) form {
       display: grid;
       grid-template-columns:
         minmax(0, 1fr)
@@ -551,31 +557,31 @@ body:has(.german-page) {
       gap: 1rem;
     }
 
-    .german-inline-form form > :not([hidden]) ~ :not([hidden]) {
+    .german-inline-form:not(.german-stacked-form) form > :not([hidden]) ~ :not([hidden]) {
       margin-top: 0;
       margin-bottom: 0;
     }
 
-    .german-inline-form textarea {
+    .german-inline-form:not(.german-stacked-form) textarea {
       min-height: 3rem;
       height: 3rem;
       overflow-y: hidden;
       resize: none;
     }
 
-    .german-inline-form form > div:last-child {
+    .german-inline-form:not(.german-stacked-form) form > div:last-child {
       display: flex;
       align-items: flex-end;
       align-self: stretch;
     }
 
-    .german-inline-form button[type="submit"] {
+    .german-inline-form:not(.german-stacked-form) button[type="submit"] {
       height: 3rem;
       min-width: 8rem;
       border-radius: 9999px;
     }
 
-    .german-inline-form form > p[role="alert"] {
+    .german-inline-form:not(.german-stacked-form) form > p[role="alert"] {
       grid-column: 1 / -1;
     }
   }
