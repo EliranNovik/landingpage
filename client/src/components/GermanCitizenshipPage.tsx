@@ -19,7 +19,10 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { VideoCarousel } from "@/components/VideoCarousel";
 import { siteLogo, siteLogoAlt } from "@/data/assets";
 import i18n from "@/i18n";
-import { GERMAN_CITIZENSHIP_SOURCE_CODE } from "@/lib/sourceCode";
+import {
+  GERMAN_CITIZENSHIP_EN_SOURCE_CODE,
+  GERMAN_CITIZENSHIP_SOURCE_CODE,
+} from "@/lib/sourceCode";
 
 const hebrewEligibilityPoints = [
   "100% אחוזי הצלחה למתאימים",
@@ -214,6 +217,9 @@ export function GermanCitizenshipPage({
   );
   const [formFocused, setFormFocused] = useState(false);
   const [playingShort, setPlayingShort] = useState<string | null>(null);
+  const sourceCode = isEnglish
+    ? GERMAN_CITIZENSHIP_EN_SOURCE_CODE
+    : GERMAN_CITIZENSHIP_SOURCE_CODE;
 
   useEffect(() => {
     void i18n.changeLanguage(language).finally(() => setLanguageReady(true));
@@ -441,7 +447,7 @@ export function GermanCitizenshipPage({
                 <div className="relative text-white">
                   <ContactForm
                     variant="minimal"
-                    sourceCode={GERMAN_CITIZENSHIP_SOURCE_CODE}
+                    sourceCode={sourceCode}
                     stableCountrySelect
                     title={isEnglish ? "Let's Discuss Your Case" : undefined}
                     subtitle={
@@ -914,7 +920,7 @@ export function GermanCitizenshipPage({
                 <ContactForm
                   id="bottom-contact-form"
                   variant="minimal"
-                  sourceCode={GERMAN_CITIZENSHIP_SOURCE_CODE}
+                  sourceCode={sourceCode}
                   stableCountrySelect
                   hideHeader
                   submitLabel={isEnglish ? "Submit" : undefined}

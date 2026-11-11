@@ -1,0 +1,11 @@
+RewriteEngine On
+
+RewriteRule ^israel-migration/?$ /israel-migration.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ /index.html [L]
+
+<FilesMatch "\.html$">
+  Header set Cache-Control "no-cache"
+</FilesMatch>

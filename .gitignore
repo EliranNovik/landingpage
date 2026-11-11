@@ -1,5 +1,7 @@
 node_modules
 dist
+jetserver-upload.zip
+jetserver-upload/
 .DS_Store
 *.log
 .env
